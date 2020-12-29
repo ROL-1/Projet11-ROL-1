@@ -3,7 +3,7 @@
 https://openclassrooms.com/fr/paths/68/projects/159/assignment
 
 ## Trello
-https://trello.com/b/aE3Hh6nX/p8-nutella
+https://trello.com/b/aE3Hh6nX/p8-purbeurre
 
 La startup Pur Beurre, avec laquelle vous avez déjà travaillé, souhaite développer une plateforme web à destination de ses clients. Ce site permettra à quiconque de trouver un substitut sain à un aliment considéré comme "Trop gras, trop sucré, trop salé".
 
