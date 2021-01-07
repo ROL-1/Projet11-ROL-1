@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 import os
+import dj_database_url
 
 from pathlib import Path
 
@@ -32,7 +33,8 @@ if os.environ.get("ENV") == "PRODUCTION":
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "lepurbeurre.herokuapp.com"]
+ALLOWED_HOSTS = ["*"]
+# "127.0.0.1", "lepurbeurre.herokuapp.com"]
 # ajout 127.0.0.1 ?
 
 # Application definition
