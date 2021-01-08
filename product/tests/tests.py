@@ -33,132 +33,85 @@ class ProductModelTest(TestCase):
         )
 
     def setUp(self):
-        print(
-            " setUp: Run once for every test method to setup clean data. Utilisé ici non pour clean, mais pour éviter répétition : ok ?"
-        )
         self.product = Product.objects.get(id=1)
         pass
 
-    # Label #
-    def test_product_name_fr_label(self):
-        field_label = self.product._meta.get_field(
-            "product_name_fr"
-        ).verbose_name
-        self.assertEquals(field_label, "product name fr")
-
-    def test_generic_name_fr_label(self):
-        field_label = self.product._meta.get_field(
-            "generic_name_fr"
-        ).verbose_name
-        self.assertEquals(field_label, "generic name fr")
-
-    def test_description_label(self):
-        field_label = self.product._meta.get_field("description").verbose_name
-        self.assertEquals(field_label, "description")
-
-    def test_fat_100g_label(self):
-        field_label = self.product._meta.get_field("fat_100g").verbose_name
-        self.assertEquals(field_label, "fat 100g")
-
-    def test_satured_fat_100g_label(self):
-        field_label = self.product._meta.get_field(
-            "satured_fat_100g"
-        ).verbose_name
-        self.assertEquals(field_label, "satured fat 100g")
-
-    def test_salt_100g_label(self):
-        field_label = self.product._meta.get_field("salt_100g").verbose_name
-        self.assertEquals(field_label, "salt 100g")
-
-    def test_sugars_100g_label(self):
-        field_label = self.product._meta.get_field("sugars_100g").verbose_name
-        self.assertEquals(field_label, "sugars 100g")
-
-    def test_url_label(self):
-        field_label = self.product._meta.get_field("url").verbose_name
-        self.assertEquals(field_label, "url")
-
-    def test_image_url_label(self):
-        field_label = self.product._meta.get_field("image_url").verbose_name
-        self.assertEquals(field_label, "image url")
-
-    def test_CodesProductsOff_label(self):
-        field_label = self.product._meta.get_field(
-            "CodesProductsOff"
-        ).verbose_name
-        self.assertEquals(field_label, "CodesProductsOff")
-
-    def test_Brands_label(self):
-        field_label = self.product._meta.get_field("Brands").verbose_name
-        self.assertEquals(field_label, "Brands")
-
-    def test_NutriscoreGrades_label(self):
-        field_label = self.product._meta.get_field(
-            "NutriscoreGrades"
-        ).verbose_name
-        self.assertEquals(field_label, "NutriscoreGrades")
-
-    def test_Categories_label(self):
-        field_label = self.product._meta.get_field("Categories").verbose_name
-        self.assertEquals(field_label, "Categories")
+    def test_product_labels(self):
+        fields_list = [
+            "CodesProductsOff_id",
+            "Brands_id",
+            "NutriscoreGrades_id",
+            "product_name_fr",
+            "generic_name_fr",
+            "description",
+            "fat_100g",
+            "satured_fat_100g",
+            "salt_100g",
+            "sugars_100g",
+            "url",
+            "image_url",
+        ]
+        labels_list = [
+            "CodesProductsOff",
+            "Brands",
+            "NutriscoreGrades",
+            "product name fr",
+            "generic name fr",
+            "description",
+            "fat 100g",
+            "satured fat 100g",
+            "salt 100g",
+            "sugars 100g",
+            "url",
+            "image url",
+        ]
+        for field, label in zip(fields_list, labels_list):
+            field_label = self.product._meta.get_field(field).verbose_name
+            self.assertEquals(field_label, label)
 
     # max_length #
-    def test_product_name_fr_max_length(self):
-        max_length = self.product._meta.get_field("product_name_fr").max_length
-        self.assertEquals(max_length, 100)
-
-    def test_generic_name_fr_max_length(self):
-        max_length = self.product._meta.get_field("generic_name_fr").max_length
-        self.assertEquals(max_length, 100)
+    def test_product_max_length(self):
+        fields_list = ["product_name_fr", "generic_name_fr"]
+        max_lengths_list = [100, 100]
+        for field, max_length in zip(fields_list, max_lengths_list):
+            field_label = self.product._meta.get_field(field).max_length
+            self.assertEquals(field_label, max_length)
 
     # max_digits #
-    def test_fat_100g_max_digits(self):
-        max_digits = self.product._meta.get_field("fat_100g").max_digits
-        self.assertEquals(max_digits, 5)
-
-    def test_satured_fat_100g_max_digits(self):
-        max_digits = self.product._meta.get_field(
-            "satured_fat_100g"
-        ).max_digits
-        self.assertEquals(max_digits, 5)
-
-    def test_salt_100g_max_digits(self):
-        max_digits = self.product._meta.get_field("salt_100g").max_digits
-        self.assertEquals(max_digits, 5)
-
-    def test_sugars_100g_max_digits(self):
-        max_digits = self.product._meta.get_field("sugars_100g").max_digits
-        self.assertEquals(max_digits, 5)
+    def test_product_max_digits(self):
+        fields_list = [
+            "fat_100g",
+            "satured_fat_100g",
+            "salt_100g",
+            "sugars_100g",
+        ]
+        max_digits_list = [5, 5, 5, 5]
+        for field, max_digits in zip(fields_list, max_digits_list):
+            field_label = self.product._meta.get_field(field).max_digits
+            self.assertEquals(field_label, max_digits)
 
     # decimal_places #
-    def test_fat_100g_decimal_places(self):
-        decimal_places = self.product._meta.get_field(
-            "fat_100g"
-        ).decimal_places
-        self.assertEquals(decimal_places, 2)
-
-    def test_satured_fat_100g_decimal_places(self):
-        decimal_places = self.product._meta.get_field(
-            "satured_fat_100g"
-        ).decimal_places
-        self.assertEquals(decimal_places, 2)
-
-    def test_salt_100g_decimal_places(self):
-        decimal_places = self.product._meta.get_field(
-            "salt_100g"
-        ).decimal_places
-        self.assertEquals(decimal_places, 2)
-
-    def test_sugars_100g_decimal_places(self):
-        decimal_places = self.product._meta.get_field(
-            "sugars_100g"
-        ).decimal_places
-        self.assertEquals(decimal_places, 2)
+    def test_product_decimal_places(self):
+        fields_list = [
+            "fat_100g",
+            "satured_fat_100g",
+            "salt_100g",
+            "sugars_100g",
+        ]
+        decimal_places_list = [2, 2, 2, 2]
+        for field, decimal_places in zip(fields_list, decimal_places_list):
+            field_label = self.product._meta.get_field(field).decimal_places
+            self.assertEquals(field_label, decimal_places)
 
     # __str__ #
     def test_object_name_is_product_name_fr(self):
         expected_object_name = self.product.product_name_fr
         self.assertEquals(expected_object_name, str(self.product))
+
+    def test_object_name_is_category(self):
+        categories = Categories.objects.get(id=1)
+        expected_object_name = categories.category
+        self.assertEquals(expected_object_name, str(categories))
 
 
 class CodesProductsOffModelTest(TestCase):
@@ -198,24 +151,17 @@ class NutriscoreGradesTest(TestCase):
 
 class CategoriesTest(TestCase):
     # Label #
-    def test_category_label(self):
-        field_label = Categories._meta.get_field("category").verbose_name
-        self.assertEquals(field_label, "category")
-
-    def test_parent_label(self):
-        field_label = Categories._meta.get_field("parent_id").verbose_name
-        self.assertEquals(field_label, "parent")
+    def test_categories_Label(self):
+        fields_list = ["category", "parent_id"]
+        labels_list = ["category", "parent"]
+        for field, label in zip(fields_list, labels_list):
+            field_label = Categories._meta.get_field(field).verbose_name
+            self.assertEquals(field_label, label)
 
     # max_length #
     def test_category_max_length(self):
         max_length = Categories._meta.get_field("category").max_length
         self.assertEquals(max_length, 75)
-
-    # # __str__ # ????????
-    # def test_object_name_is_category(self):
-    #     categories = Categories.objects.get(id=1)
-    #     expected_object_name = categories.category
-    #     self.assertEquals(expected_object_name, str(categories))
 
 
 # Les classes de test ont aussi une méthode tearDown():
