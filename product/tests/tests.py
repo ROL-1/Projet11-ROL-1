@@ -162,10 +162,3 @@ class CategoriesTest(TestCase):
     def test_category_max_length(self):
         max_length = Categories._meta.get_field("category").max_length
         self.assertEquals(max_length, 75)
-
-
-# Les classes de test ont aussi une méthode tearDown():
-#  que nous n'avons pas utilisée. Cette méthode n'est pas particulièrement utile pour les tests
-#  avec bases de données, dans la mesure où la classe de base TestCase prend soin pour vous de
-#  supprimer la base de données utilisées pour les tests.
-

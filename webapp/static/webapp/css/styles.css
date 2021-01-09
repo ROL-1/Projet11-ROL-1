@@ -164,7 +164,7 @@ a {
   background-color: transparent;
 }
 a:hover {
-  color: #d6370c;
+  color: #86ebe6;
   text-decoration: underline;
 }
 
@@ -2345,6 +2345,7 @@ textarea.form-control {
 .form-inline .form-check {
   width: 100%;
 }
+
 @media (min-width: 576px) {
   .form-inline label {
     display: flex;
@@ -3025,7 +3026,16 @@ input[type=button].btn-block {
     left: auto;
   }
 }
+#colette1{
+  display:none;
+}
 @media (min-width: 992px) {
+  #colette2{
+    display:none;
+  }
+  #colette1{
+    display:block;
+  }
   .dropdown-menu-lg-left {
     right: auto;
     left: 0;
@@ -6073,7 +6083,7 @@ a.close.disabled {
 }
 
 .bg-primary {
-  background-color: #f4623a !important;
+  background-color: #ffffff !important;
 }
 
 a.bg-primary:hover, a.bg-primary:focus,
@@ -10008,11 +10018,12 @@ hr.light {
 
 .page-section {
   padding: 8rem 0;
+  background-color: #c45525;
 }
 
 #mainNav {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  background-color: #fff;
+  background-color: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%) #fff;
   transition: background-color 0.2s ease;
 }
 #mainNav .navbar-brand {
@@ -10056,7 +10067,7 @@ hr.light {
   }
   #mainNav.navbar-scrolled {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    background-color: #fff;
+    background-color: #e8a75d;
   }
   #mainNav.navbar-scrolled .navbar-brand {
     color: #212529;
@@ -10142,4 +10153,36 @@ header.masthead h1 {
 
 .text-white-75 {
   color: rgba(255, 255, 255, 0.75);
+}
+
+/* Personal css */
+.logo {
+  width: 50px;
+  margin-right : 10px;
+}
+.carot {
+  width: 50px;
+}
+.search-nav{
+  margin-top : 7px;
+}
+
+.mastheadtext{
+  color: #de9440;
+  text-shadow: 1px 1px 2px black;  
+}
+
+.copyright{
+  margin-top : 20px;  
+}
+
+.foot{
+  background: #345a61 !important;
+}
+
+#story{
+  background: #de9440 !important; 
+}
+#story .img{
+  max-width: 100px;
 }
