@@ -13,3 +13,8 @@ def index(request):
 def results(request):
     template = loader.get_template("webapp/results.html")
     return HttpResponse(template.render(request=request))
+
+
+def product(request):
+    template = loader.get_template("webapp/product.html")
+    return HttpResponse(template.render(request=request))

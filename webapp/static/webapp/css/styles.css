@@ -10235,5 +10235,15 @@ header.masthead h1 {
   right:0.7em;
 }
 
+.offlink{
+  margin-top: 2em;
+  font-size: 2em;
+}
 
-
+.offlink-text{
+  display:inline;
+  box-sizing: border-box;
+  padding : 0.2em  0.5em  0.2em  0.5em;
+  border: solid #e8a75d 10px;
+  width: 100%;
+}
