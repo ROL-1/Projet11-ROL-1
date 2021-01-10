@@ -14,12 +14,20 @@
             <div class="col-lg-8 align-self-baseline">
                 <h2 class="text-uppercase font-weight-bold mastheadtext">Trouvez un produit de substitution pour ceux
                     que vous consommez tous les jours.<h2>
+                        <form>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Produit">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary btn-block" type="button">Chercher</button>
+                                </div>
+                            </div>
+                        </form>
             </div>
         </div>
     </div>
 </header>
 <!-- About-->
-<section class="page-section bg-primary" id="story">
+<section class="page-section bg-primary" id="page">
     <div class="container">
         <div class="text-center">
             <h2 class="text-grey mt-0">Colette et Rémy</h2>
@@ -27,7 +35,7 @@
         </div>
         <div class="row justify-content-center align-items-center">
             <div class="col-lg-2 col-sm-6 text-center" id="colette1">
-                <img class="img" src="{% static 'webapp/assets/img/story/colette.png' %}" alt="" />
+                <img class="img" src="{% static 'webapp/assets/img/page/colette.png' %}" alt="colette" />
                 <div class="text-grey-50 text-center">Colette</div>
             </div>
             <div class="col-lg-8 text-center">
@@ -47,11 +55,11 @@
                 </p>
             </div>
             <div class="col-lg-2 col-sm-6 text-center" id="colette2">
-                <img class="img" src="{% static 'webapp/assets/img/story/colette.png' %}" alt="" />
+                <img class="img" src="{% static 'webapp/assets/img/page/colette.png' %}" alt="colette" />
                 <div class="text-grey-50 text-center">Colette</div>
             </div>
             <div class="col-lg-2 col-sm-6 text-center">
-                <img class="img" src="{% static 'webapp/assets/img/story/remy.png' %}" alt="" />
+                <img class="img" src="{% static 'webapp/assets/img/page/remy.png' %}" alt="remy" id="remy" />
                 <div class="project-category text-grey-50 text-center">Remy</div>
             </div>
         </div>

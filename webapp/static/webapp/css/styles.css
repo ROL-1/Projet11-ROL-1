@@ -159,7 +159,7 @@ sup {
 }
 
 a {
-  color: #f4623a;
+  color: #c45525;
   text-decoration: none;
   background-color: transparent;
 }
@@ -10134,7 +10134,8 @@ header.masthead h1 {
   text-align: center;
   opacity: 0;
   color: #fff;
-  background: rgba(244, 98, 58, 0.9);
+  background: rgba(134, 235, 230, 0.5);
+  /* rgba(244, 98, 58, 0.9) */
   transition: opacity 0.25s ease;
   text-align: center;
 }
@@ -10180,9 +10181,26 @@ header.masthead h1 {
   background: #345a61 !important;
 }
 
-#story{
+#page{
   background: #de9440 !important; 
 }
-#story .img{
+#page .img{
   max-width: 100px;
+}
+#remy {
+  margin-top: 50px;
+  }
+@media (min-width: 576px) {
+  #remy {
+    margin-top: 0px;
+  }
+
+/* Results */
+@media (min-width: 992px) {
+  #masthead-results {
+    min-height: 20rem !important;
+  }
+}
+#masthead-results {
+  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/page/OFF_not_found.png");
 }

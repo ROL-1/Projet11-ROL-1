@@ -20,15 +20,16 @@ from django.contrib import admin
 from webapp import views
 
 urlpatterns = [
-    url(r'^$', views.index),
-    url(r'^product/', include('product.urls')),
-    url(r'^user/', include('user.urls')),
-    url(r'^webapp/', include('webapp.urls')),
-    url(r'^admin/', admin.site.urls),
+    url(r"^$", views.index),
+    url(r"^product/", include("product.urls")),
+    url(r"^user/", include("user.urls")),
+    url(r"^webapp/", include("webapp.urls")),
+    url(r"^admin/", admin.site.urls),
 ]
 
 if settings.DEBUG:
     import debug_toolbar
+
     urlpatterns = [
-        url(r'^__debug__/', include(debug_toolbar.urls)),
+        url(r"^__debug__/", include(debug_toolbar.urls)),
     ] + urlpatterns
