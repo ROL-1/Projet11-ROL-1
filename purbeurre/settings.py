@@ -28,11 +28,7 @@ SECRET_KEY = os.environ.get(
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-# if os.environ.get("ENV") == "PRODUCTION":
-#     DEBUG = False
-# else:
-#     DEBUG = True
+
 
 ALLOWED_HOSTS = ["*"]
 # "127.0.0.1", "lepurbeurre.herokuapp.com"]
@@ -154,7 +150,7 @@ STATICFILES_DIRS = (os.path.join(PROJECT_ROOT, "static"),)
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 if os.environ.get("ENV") == "PRODUCTION":
-
+    DEBUG = False
     # # Static files settings
     PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -165,3 +161,6 @@ if os.environ.get("ENV") == "PRODUCTION":
 
     db_from_env = dj_database_url.config(conn_max_age=500)
     DATABASES["default"].update(db_from_env)
+
+else:
+    DEBUG = True
