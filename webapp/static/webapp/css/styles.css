@@ -10195,8 +10195,9 @@ header.masthead h1 {
 }
 
 #page{
-  background: #de9440 !important; 
+  background: #de9440 !important;
 }
+
 #page .img{
   max-width: 7em;
 }
@@ -10208,15 +10209,34 @@ header.masthead h1 {
     margin-top: 0px;
   }
 }
-/* Results */
+
 @media (min-width: 992px) {
   #masthead-results {
+    min-height: 20rem !important;
+  }
+  #masthead-log {
+    min-height: 20rem !important;
+  }
+  #masthead-account {
     min-height: 20rem !important;
   }
 }
 #masthead-results {
   background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/page/OFF_not_found.png");
 }
+#masthead-log {
+  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/log/bg-masthead-log.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#masthead-account {
+  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/account/bg-masthead-account.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 #contact {
   color : black;
 }
@@ -10241,9 +10261,27 @@ header.masthead h1 {
 }
 
 .offlink-text{
-  display:inline;
   box-sizing: border-box;
   padding : 0.2em  0.5em  0.2em  0.5em;
   border: solid #e8a75d 10px;
   width: 100%;
+}
+
+.fa-user{
+  color: #c45525;
+}
+.fa-user:hover{
+  color: #86ebe6;
+}
+.fa-sign-out-alt{
+  color: #c45525;
+}
+.fa-sign-out-alt:hover{
+  color: #86ebe6;
+}
+.fa-sign-in-alt{
+  color: #c45525;
+}
+.fa-sign-in-alt:hover{
+  color: #86ebe6;
 }

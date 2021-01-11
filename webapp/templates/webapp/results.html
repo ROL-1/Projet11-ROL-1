@@ -15,25 +15,27 @@
 </header>
 
 <!-- Results -->
-<section class="page-section bg-primary" id="page">
-    <div class="container">
-        <div class="text-center">
-            <h2 class="text-grey mt-0">Vous pouvez remplacer cet aliment par :</h2>
-            <hr class="divider darth my-4" />
-        </div>
-    </div>
-    <!-- Portfolio-->
-    <div id="portfolio">
-        <div class="container-fluid p-0">
-            <div class="row no-gutters">
-                {% include 'webapp/portfoliobox.html' %}
-                {% include 'webapp/portfoliobox.html' %}
-                {% include 'webapp/portfoliobox.html' %}
-                {% include 'webapp/portfoliobox.html' %}
-                {% include 'webapp/portfoliobox.html' %}
-                {% include 'webapp/portfoliobox.html' %}
+<div>
+    <section class="page-section bg-primary" id="page">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="text-grey mt-0">Vous pouvez remplacer cet aliment par :</h2>
+                <hr class="divider darth my-4" />
             </div>
         </div>
-    </div>
-</section>
+        <!-- Portfolio-->
+        <div id="portfolio">
+            <div class="container-fluid p-0">
+                <div class="row no-gutters">
+                    {% include 'webapp/portfoliobox.html' %}
+                    {% include 'webapp/portfoliobox.html' %}
+                    {% include 'webapp/portfoliobox.html' %}
+                    {% include 'webapp/portfoliobox.html' %}
+                    {% include 'webapp/portfoliobox.html' %}
+                    {% include 'webapp/portfoliobox.html' %}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 {% endblock %}
