@@ -10087,7 +10087,7 @@ hr.light {
 header.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/bg-masthead.jpg");
+  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/bg-masthead.99dd1c12df6c.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -10165,14 +10165,14 @@ header.masthead h1 {
 .carot {
   width: 3em;
   height: 3em;
-  background: url("../assets/img/carot1.png") no-repeat;
+  background: url("../assets/img/carot1.39f2ac5a329b.png") no-repeat;
   background-position: center;
   background-size: cover;
 }
 .carot:hover {
   width: 3em;
   height: 3em;
-  background: url("../assets/img/carot2.png") no-repeat;
+  background: url("../assets/img/carot2.61a8fd225a48.png") no-repeat;
   background-position: center;
   background-size: cover;
 }
@@ -10215,7 +10215,7 @@ header.masthead h1 {
   }
 }
 #masthead-results {
-  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/page/OFF_not_found.png");
+  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/page/OFF_not_found.6114031f9f64.png");
 }
 #contact {
   color : black;
