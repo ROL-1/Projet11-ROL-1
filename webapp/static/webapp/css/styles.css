@@ -2995,7 +2995,7 @@ input[type=button].btn-block {
   border-radius: 0.25rem;
 }
 
-.dropdown-menu-left {
+.dropdown-menu-left {sws
   right: auto;
   left: 0;
 }
@@ -10112,7 +10112,7 @@ header.masthead h1 {
 }
 @media (min-width: 1200px) {
   header.masthead h1 {
-    font-size: 3.5rem;
+    font-size: 4rem;
   }
 }
 
@@ -10196,6 +10196,7 @@ header.masthead h1 {
 
 #page{
   background: #de9440 !important;
+  /* height:100% !important; */
 }
 
 #page .img{
@@ -10284,4 +10285,9 @@ header.masthead h1 {
 }
 .fa-sign-in-alt:hover{
   color: #86ebe6;
+}
+
+.product-img{
+  border: 5px solid white;
+  border-radius: 10px;
 }

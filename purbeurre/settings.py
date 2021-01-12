@@ -164,3 +164,6 @@ if os.environ.get("ENV") == "PRODUCTION":
 
 else:
     DEBUG = True
+
+AUTH_USER_MODEL = "user.User"
+
