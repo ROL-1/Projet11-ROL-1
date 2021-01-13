@@ -10240,7 +10240,7 @@ header.masthead h1 {
   font-size: 2em;
 }
 
-.offlink-text{
+.borderedtext{
   display:inline;
   box-sizing: border-box;
   padding : 0.2em  0.5em  0.2em  0.5em;

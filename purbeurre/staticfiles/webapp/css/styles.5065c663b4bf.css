@@ -10260,7 +10260,7 @@ header.masthead h1 {
   font-size: 2em;
 }
 
-.offlink-text{
+.borderedtext{
   box-sizing: border-box;
   padding : 0.2em  0.5em  0.2em  0.5em;
   border: solid #e8a75d 10px;

@@ -10,6 +10,11 @@ def account(request):
     return HttpResponse(template.render(request=request))
 
 
+def contact(request):
+    template = loader.get_template("webapp/contact.html")
+    return HttpResponse(template.render(request=request))
+
+
 def index(request):
     template = loader.get_template("webapp/index.html")
     return HttpResponse(template.render(request=request))
@@ -17,6 +22,11 @@ def index(request):
 
 def product(request):
     template = loader.get_template("webapp/product.html")
+    return HttpResponse(template.render(request=request))
+
+
+def legal(request):
+    template = loader.get_template("webapp/legal.html")
     return HttpResponse(template.render(request=request))
 
 
