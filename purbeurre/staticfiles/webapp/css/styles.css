@@ -10158,18 +10158,18 @@ header.masthead h1 {
 }
 
 /* Personal css */
-.logo {
+.navbar-logo {
   width: 3em;
   margin-right : 1em;
 }
-.carot {
+.navbar-carot {
   width: 3em;
   height: 3em;
   background: url("../assets/img/carot1.png") no-repeat;
   background-position: center;
   background-size: cover;
 }
-.carot:hover {
+.navbar-carot:hover {
   width: 3em;
   height: 3em;
   background: url("../assets/img/carot2.png") no-repeat;
@@ -10181,7 +10181,7 @@ header.masthead h1 {
   margin-top : 7px;
 }
 
-.mastheadtext{
+.masthead__text{
   color: #de9440;
   text-shadow: 1px 1px 2px black;  
 }
@@ -10212,27 +10212,27 @@ header.masthead h1 {
 }
 
 @media (min-width: 992px) {
-  #masthead-results {
+  .masthead-results {
     min-height: 20rem !important;
   }
-  #masthead-log {
+  #masthead-small1 {
     min-height: 20rem !important;
   }
-  #masthead-account {
+  #masthead-small2 {
     min-height: 20rem !important;
   }
 }
-#masthead-results {
+.masthead-results {
   background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/page/OFF_not_found.png");
 }
-#masthead-log {
-  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/log/bg-masthead-log.jpg");
+#masthead-small1 {
+  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/log/bg-masthead-small1.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
-#masthead-account {
-  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/account/bg-masthead-account.jpg");
+#masthead-small2 {
+  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/account/bg-masthead-small2.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -10256,12 +10256,12 @@ header.masthead h1 {
   right:0.7em;
 }
 
-.borderedtext{
+.text--bordered{
   margin-top: 2em;
   font-size: 2em;
 }
 
-.borderedtext{
+.text--bordered{
   box-sizing: border-box;
   padding : 0.2em  0.5em  0.2em  0.5em;
   border: solid #e8a75d 10px;
