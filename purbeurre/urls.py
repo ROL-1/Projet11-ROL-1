@@ -20,7 +20,7 @@ from django.contrib import admin
 from webapp import views
 
 urlpatterns = [
-    url(r"^$", views.index),
+    url(r"^$", views.index, name="home"),
     url(r"^product/", include("product.urls")),
     url(r"^user/", include("user.urls")),
     url(r"^webapp/", include("webapp.urls")),

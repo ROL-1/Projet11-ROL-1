@@ -36,13 +36,11 @@
                 <a href="http://127.0.0.1:8000/"> /H</a>
                 <a href="http://127.0.0.1:8000/webapp/results/">/R</a>
                 <a href="http://127.0.0.1:8000/webapp/product/"> /P</a>
-                <a href="http://127.0.0.1:8000/webapp/log/"> /L</a>
                 <a href="http://127.0.0.1:8000/webapp/account/"> /A</a>
                 h
                 <a href="https://lepurbeurre.herokuapp.com"> /H</a>
                 <a href="https://lepurbeurre.herokuapp.com/webapp/results/">/R</a>
                 <a href="https://lepurbeurre.herokuapp.com/webapp/product/"> /P</a>
-                <a href="https://lepurbeurre.herokuapp.com/webapp/log/"> /L</a>
                 <a href="https://lepurbeurre.herokuapp.com/webapp/account/"> /A</a>
             </div>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -53,6 +51,7 @@
                     <form id="search-nav" action="/" method="get">
                         <input class="form-control search-nav" type="text" placeholder="Chercher">
                     </form>
+                    {% if user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link" href="https://lepurbeurre.herokuapp.com/user/myaccount/">
                             <i class="fas fa-user fa-3x"></i>
                         </a><a class="nav-link" href="http://127.0.0.1:8000/user/myaccount/">/D</a></li>
@@ -60,14 +59,16 @@
                             <div class="navbar-carot"></div>
                         </a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="https://lepurbeurre.herokuapp.com/webapp/log/">
-                            <i class="fas fa-sign-in-alt fa-3x"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">
                             <i class="fas fa-sign-out-alt fa-3x"></i>
                         </a>
                     </li>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">
+                            <i class="fas fa-sign-in-alt fa-3x"></i>
+                        </a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>

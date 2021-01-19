@@ -30,9 +30,9 @@ def legal(request):
     return HttpResponse(template.render(request=request))
 
 
-def log(request):
-    template = loader.get_template("webapp/log.html")
-    return HttpResponse(template.render(request=request))
+# def log(request):
+#     template = loader.get_template("webapp/log.html")
+#     return HttpResponse(template.render(request=request))
 
 
 def results(request):
