@@ -1,9 +1,12 @@
 {% load static %}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'webapp/css/styles_portfoliobox.css' %}" />
+</head>
 <div class="h-100 col-lg-4 col-sm-6 px-5 mt-5">
     <a class="portfolio-box" href="###">
-        <object class="img-fluid product-img" data="{% static 'webapp/assets/img/bg-masthead.jpg' %}" type="image/png">
-            <img class="img-fluid product-img" src="{% static 'webapp/assets/img/page/OFF_not_found.png' %}"
-                alt="not found image">
+        <object class="img-fluid" data="{% static 'webapp/assets/img/bg-masthead.jpg' %}" type="image/png">
+            <img class="img-fluid" src="{% static 'webapp/assets/img/page/OFF_not_found.png' %}" alt="not found image">
         </object>
         <div class="portfolio-box-caption">
             <div class="project-name">Cliquez ici pour voir la fiche du produit.</div>
