@@ -107,7 +107,7 @@ a:hover {
 .navbar-carot {
   width: 3em;
   height: 3em;
-  background: url("../assets/img/carot1.png") no-repeat;
+  background: url("../assets/img/carot1.39f2ac5a329b.png") no-repeat;
   background-position: center;
   background-size: cover;
 }
@@ -115,7 +115,7 @@ a:hover {
 .navbar-carot:hover {
   width: 3em;
   height: 3em;
-  background: url("../assets/img/carot2.png") no-repeat;
+  background: url("../assets/img/carot2.61a8fd225a48.png") no-repeat;
   background-position: center;
   background-size: cover;
 }
@@ -125,6 +125,19 @@ a:hover {
 }
 
 /* Body */
+#colette1 {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  #colette2 {
+    display: none;
+  }
+  #colette1 {
+    display: block;
+  }
+}
+
 @media (min-width: 1200px) {
   header.masthead h1 {
     font-size: 4rem;
@@ -135,8 +148,41 @@ a:hover {
   background: #de9440 !important;
 }
 
+.main-section .img {
+  max-width: 8em;
+}
+
+.main-section #remy {
+  margin-top: 2em;
+}
+
+@media (min-width: 576px) {
+  .main-section #remy {
+    margin-top: 0;
+  }
+}
+
 #portfolio .container-fluid .portfolio-box .portfolio-box-caption, #portfolio .container-sm .portfolio-box .portfolio-box-caption, #portfolio .container-md .portfolio-box .portfolio-box-caption, #portfolio .container-lg .portfolio-box .portfolio-box-caption, #portfolio .container-xl .portfolio-box .portfolio-box-caption {
   background: rgba(134, 235, 230, 0.5);
+}
+
+#contact {
+  color: black;
+  color: black;
+}
+
+#contact a:hover {
+  color: #86ebe6;
+  text-decoration: underline;
+}
+
+.nutriscore {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  top: -1.5em;
+  right: 0.7em;
 }
 
 /* Masthead */
@@ -158,8 +204,8 @@ a:hover {
 }
 
 .masthead-results {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(92, 77, 66, 0.8)), to(rgba(92, 77, 66, 0.8))), url("../assets/img/page/OFF_not_found.png");
-  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/page/OFF_not_found.png");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(92, 77, 66, 0.8)), to(rgba(92, 77, 66, 0.8))), url("../assets/img/page/OFF_not_found.6114031f9f64.png");
+  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/page/OFF_not_found.6114031f9f64.png");
 }
 
 .masthead-small1, .masthead-small2 {
@@ -169,13 +215,13 @@ a:hover {
 }
 
 .masthead-small1 {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(92, 77, 66, 0.8)), to(rgba(92, 77, 66, 0.8))), url("../assets/img/bg-masthead-2.jpg");
-  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/bg-masthead-2.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(92, 77, 66, 0.8)), to(rgba(92, 77, 66, 0.8))), url("../assets/img/bg-masthead-2.9b4f99e12847.jpg");
+  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/bg-masthead-2.9b4f99e12847.jpg");
 }
 
 .masthead-small2 {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(92, 77, 66, 0.8)), to(rgba(92, 77, 66, 0.8))), url("../assets/img/bg-masthead-3.jpg");
-  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/bg-masthead-3.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(92, 77, 66, 0.8)), to(rgba(92, 77, 66, 0.8))), url("../assets/img/bg-masthead-3.619c8ecb86d0.jpg");
+  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/bg-masthead-3.619c8ecb86d0.jpg");
 }
 
 /* Footer */
@@ -186,4 +232,4 @@ a:hover {
 .foot {
   background: #345a61 !important;
 }
-/*# sourceMappingURL=styles_base.css.map */
+/*# sourceMappingURL=styles_adds.css.map */

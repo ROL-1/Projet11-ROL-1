@@ -1,0 +1,9 @@
+.nutriscore {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  top: -1.5em;
+  right: 0.7em;
+}
+/*# sourceMappingURL=styles_portfoliobox.css.map */
