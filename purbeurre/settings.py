@@ -89,7 +89,7 @@ WSGI_APPLICATION = "purbeurre.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "lepurbeurre",
+        "NAME": "purbeurre",
         "USER": "postgres",
         "PASSWORD": "mdp123",
         "HOST": "localhost",
@@ -166,7 +166,7 @@ if os.environ.get("ENV") == "PRODUCTION":
 else:
     DEBUG = True
 
-AUTH_USER_MODEL = "user.User"
+AUTH_USER_MODEL = "user.CustomUser"
 
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
