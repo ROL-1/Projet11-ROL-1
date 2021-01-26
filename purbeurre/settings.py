@@ -30,9 +30,7 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = ["*"]
-# "127.0.0.1", "lepurbeurre.herokuapp.com"]
-# ajout 127.0.0.1 ?
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".herokuapp.com"]
 
 # Application definition
 
@@ -58,7 +56,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = "purbeurre.urls"
@@ -66,8 +63,7 @@ ROOT_URLCONF = "purbeurre.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        # "DIRS": [],
-        "DIRS": [str(BASE_DIR.joinpath("templates"))],
+        "DIRS": [],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -135,33 +131,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 INTERNAL_IPS = ["127.0.0.1"]
 
-# # Static files settings
-# PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-STATIC_URL = "/static/"
-
-# STATIC_ROOT = os.path.join(PROJECT_ROOT, "staticfiles")
-
-# # Extra places for collectstatic to find static files.
-# STATICFILES_DIRS = (os.path.join(PROJECT_ROOT, "static"),)
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
-
-# Simplified static file serving.
-# https://warehouse.python.org/project/whitenoise/
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
-if os.environ.get("ENV") == "PRODUCTION":
+if os.environ.get("ENV", "DEVELOPMENT") == "PRODUCTION":
     DEBUG = False
-    # # Static files settings
-    PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
-    STATIC_ROOT = os.path.join(PROJECT_ROOT, "staticfiles")
-
-    # # Extra places for collectstatic to find static files.
-    STATICFILES_DIRS = (os.path.join(PROJECT_ROOT, "static"),)
 
     db_from_env = dj_database_url.config(conn_max_age=500)
     DATABASES["default"].update(db_from_env)
@@ -174,3 +149,4 @@ AUTH_USER_MODEL = "user.CustomUser"
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
 
+django_heroku.settings(locals())
