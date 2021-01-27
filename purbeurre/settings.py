@@ -25,13 +25,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get(
-    "SECRET_KEY", "ya^^!m@+9t14#tv*_cw4ejpigi=@p1vu3_%nh+lrhhtfcr7fqa"
+    "SECRET_KEY", ".b;Yy+#NMMw_T{t~b;[RiX9JiA7L$5#^s61c7D-t|?@F?:]N,"
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".herokuapps.com"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "lepurbeurre.herokuapp.com"]
 
 # Application definition
 
@@ -137,11 +137,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 INTERNAL_IPS = ["127.0.0.1"]
 
-if os.environ.get("ENV", "DEVELOPMENT") == "PRODUCTION":
+if os.environ.get("ENV") == "PRODUCTION":
     DEBUG = False
 
-    # db_from_env = dj_database_url.config(conn_max_age=500)
-    # DATABASES["default"].update(db_from_env)
+    db_from_env = dj_database_url.config(conn_max_age=500)
+    DATABASES["default"].update(db_from_env)
 
 else:
     DEBUG = True
