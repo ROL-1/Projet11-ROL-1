@@ -79,7 +79,7 @@ a:hover {
   font-size: 2em;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  padding: 0.2em  0.5em  0.2em  0.5em;
+  padding: 0.2em 0.5em 0.2em 0.5em;
   border: solid #e8a75d 0.2em;
   width: 100%;
 }
@@ -124,7 +124,7 @@ a:hover {
   margin-top: 0.2em;
 }
 
-/* Body */
+/* Page */
 @media (min-width: 1200px) {
   header.masthead h1 {
     font-size: 4rem;
@@ -140,6 +140,17 @@ a:hover {
 }
 
 /* Masthead */
+header.masthead {
+  padding-top: 10rem;
+  padding-bottom: calc(10rem - 4.5rem);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(92, 77, 66, 0.8)), to(rgba(92, 77, 66, 0.8))), url("../assets/img/bg-masthead.jpg");
+  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/bg-masthead.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
 .masthead__text {
   color: #de9440;
   text-shadow: 0.1em 0.1em 0.1em black;

@@ -26,9 +26,8 @@ class Categories(models.Model):
 class Product(models.Model):
     product_name_fr = models.CharField(max_length=100, unique=True)
     generic_name_fr = models.CharField(max_length=100)
-    description = models.TextField()
     fat_100g = models.DecimalField(max_digits=5, decimal_places=2)
-    satured_fat_100g = models.DecimalField(max_digits=5, decimal_places=2)
+    saturated_fat_100g = models.DecimalField(max_digits=5, decimal_places=2)
     salt_100g = models.DecimalField(max_digits=5, decimal_places=2)
     sugars_100g = models.DecimalField(max_digits=5, decimal_places=2)
     url = models.URLField(unique=True)
