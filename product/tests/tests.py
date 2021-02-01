@@ -23,9 +23,8 @@ class ProductModelTest(TestCase):
             Categories_id="1",
             product_name_fr="product name test",
             generic_name_fr="generic name test",
-            description="descriptiontest",
             fat_100g="1",
-            satured_fat_100g="2",
+            saturated_fat_100g="2",
             salt_100g="3",
             sugars_100g="4",
             url="url@test.com",
@@ -43,9 +42,8 @@ class ProductModelTest(TestCase):
             "NutriscoreGrades_id",
             "product_name_fr",
             "generic_name_fr",
-            "description",
             "fat_100g",
-            "satured_fat_100g",
+            "saturated_fat_100g",
             "salt_100g",
             "sugars_100g",
             "url",
@@ -57,9 +55,8 @@ class ProductModelTest(TestCase):
             "NutriscoreGrades",
             "product name fr",
             "generic name fr",
-            "description",
             "fat 100g",
-            "satured fat 100g",
+            "saturated fat 100g",
             "salt 100g",
             "sugars 100g",
             "url",
@@ -81,7 +78,7 @@ class ProductModelTest(TestCase):
     def test_product_max_digits(self):
         fields_list = [
             "fat_100g",
-            "satured_fat_100g",
+            "saturated_fat_100g",
             "salt_100g",
             "sugars_100g",
         ]
@@ -94,7 +91,7 @@ class ProductModelTest(TestCase):
     def test_product_decimal_places(self):
         fields_list = [
             "fat_100g",
-            "satured_fat_100g",
+            "saturated_fat_100g",
             "salt_100g",
             "sugars_100g",
         ]

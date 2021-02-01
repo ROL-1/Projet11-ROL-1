@@ -11,7 +11,8 @@ REQUEST_PARAMS = [
     "fields=",
 ]
 
-FIELDS = "generic_name_fr,product_name_fr,sugars_100g,salt_100g,saturated-fat_100g,fat_100g,nutriscore_grade,brands,code,categories,url,image_url"
+FIELDS = "generic_name_fr,product_name_fr,sugars_100g,salt_100g,\
+saturated-fat_100g,fat_100g,nutriscore_grade,brands,code,categories,url,image_url"
 
 # Add, delete or change categories.
 CATEGORIES = ["Pizzas", "Sandwichs", "Sodas", "Chocolats", "Brioches"]

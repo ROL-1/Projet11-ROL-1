@@ -17,8 +17,8 @@ from product.offapi.api_config import (
 class ApiRequests:
     """Create requests for api."""
 
-    # def __init__(self, Fields_charmax=None, verbose=None):
-    def __init__(self):
+    def __init__(self, Fields_charmax=None):
+        # TC def __init__(self):
         """Get datas from API by looping on each category until it's filled."""
         # if verbose:
         #     print("Getting data from API...")
@@ -79,23 +79,25 @@ class ApiRequests:
             if string == "":
                 return "False"
 
-    # def string_length(self, Fields_charmax, product):
-    #     """Check 4 : if string is too long for database field."""
-    #     for field, string in product.items():
-    #         # Excludes verification for the 'injection' field.
-    #         if field != "injection":
-    #             # Check for fields with characters_max().
-    #             if field in Fields_charmax.keys():
-    #                 # Check for element with max length for 'stores'.
-    #                 if field == "stores":
-    #                     if (
-    #                         len(max(string.split(","), key=len))
-    #                         > Fields_charmax[field]
-    #                     ):
-    #                         return "False"
-    #                 else:
-    #                     if len(string) > Fields_charmax[field]:
-    #                         return "False"
+    def string_length(self, Fields_charmax, product):
+        """Check 4 : if string is too long for database field."""
+        # print(Fields_charmax)
+        for field, string in product.items():
+            # print(field, string)
+            # Excludes verification for the 'injection' field.
+            if field != "injection":
+                # Check for fields with characters_max().
+                if field in Fields_charmax.keys():
+                    # Check for element with max length for 'stores'.
+                    # if field == "stores":
+                    #     if (
+                    #         len(max(string.split(","), key=len))
+                    #         > Fields_charmax[field]
+                    #     ):
+                    #         return "False"
+                    # else:
+                    if len(string) > Fields_charmax[field]:
+                        return "False"
 
     def products_nb(self, cleaned_scraped, category):
         """Check how many products by categories are suitables."""
@@ -110,8 +112,8 @@ class ApiRequests:
             cat_filled = True
         return cat_filled
 
-    # def api_get_data(self, Fields_charmax=None, verbose=None):
-    def api_get_data(self):
+    def api_get_data(self, Fields_charmax):
+        # TC def api_get_data(self):
         """Review categories until there is 'MIN_PROD' products for each."""
         for category in CATEGORIES:
             # if verbose:
@@ -133,13 +135,13 @@ class ApiRequests:
                     self.wrong_caracters(product)
                     # Check datas.
                     Data = self.data_missing(product)
-                    # Strings = self.string_length(Fields_charmax, product)
+                    Strings = self.string_length(Fields_charmax, product)
                     # Fill 'cleaned_scraped' list, if all checks are trues.
                     if (
                         ("categories" in product)
                         and (category in product["categories"])
                         and (Data != "False")
-                        # and (Strings != "False")
+                        and (Strings != "False")
                     ):
                         self.cleaned_scraped.append(product)
                 # Check how many products by categories are suitables.
