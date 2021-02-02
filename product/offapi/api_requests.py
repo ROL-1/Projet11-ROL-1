@@ -21,8 +21,6 @@ class ApiRequests:
     def __init__(self, Fields_charmax=None):
         # TC def __init__(self):
         """Get datas from API by looping on each category until it's filled."""
-        # if verbose:
-        #     print("Getting data from API...")
         self.scraped = []
         self.cleaned_scraped = []
         self.endpoint = "https://fr.openfoodfacts.org/cgi/search.pl?"
@@ -43,7 +41,7 @@ class ApiRequests:
     def add_scraped(self, request):
         """Add products in list scraped."""
         if request.status_code == 500:
-            print("500 !")
+            print("Error 500 !")
         else:
             load = json.loads(request.text)
             for product in load["products"]:
@@ -115,8 +113,6 @@ class ApiRequests:
         # TC def api_get_data(self):
         """Review categories until there is 'MIN_PROD' products for each."""
         for category in CATEGORIES:
-            # if verbose:
-            #     print("Loading", category)
             cat_filled = False
             # Loop while there is not enough products for the category.
             while cat_filled is False:
@@ -124,8 +120,6 @@ class ApiRequests:
                 request = self.api_request(category)
                 # Add products from the request to 'scraped' list.
                 self.add_scraped(request)
-                # if verbose:
-                #     print("Cleaning data for", category)
                 # Review products.
                 for product in self.scraped:
                     # Change "categories" product field for only one category.
@@ -150,14 +144,8 @@ class ApiRequests:
                 else:
                     self.page_nb = 1
 
-        # if verbose:
-        #     print(
-        #         "Datas cleaned." "Founded",
-        #         MIN_PROD,
-        #         "products minimum by categories.",
-        #     )
-
         # Write JSON of datas (for debug)
-        with open("cleaned_scraped.json", "w") as write_file:
-            json.dump(self.cleaned_scraped, write_file, indent=4)
+        # with open("cleaned_scraped.json", "w") as write_file:
+        #     json.dump(self.cleaned_scraped, write_file, indent=4)
+
         return self.cleaned_scraped

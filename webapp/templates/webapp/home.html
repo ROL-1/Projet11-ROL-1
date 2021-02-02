@@ -16,9 +16,9 @@
             <div class="col-lg-8 align-self-baseline">
                 <h2 class="text-uppercase font-weight-bold masthead__text">Trouvez un produit de substitution pour ceux
                     que vous consommez tous les jours.</h2>
-                <form>
+                <form action="{% url 'search' %}" method="get" accept-charset="utf-8">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Produit">
+                        <input type="text" class="form-control" placeholder="Produit" name="query">
                         <div class="input-group-append">
                             <button class="btn btn-primary btn-block" type="button">Chercher</button>
                         </div>
@@ -26,7 +26,8 @@
                 </form>
                 <h3 class="small font-weight-bold">Vous pouvez chercher un produit dans les catégories suivantes :
                     <br />
-                    {{ CATEGORIES|join:", "}}. </h3>
+                    {{ CATEGORIES|join:", "}}.
+                </h3>
             </div>
         </div>
     </div>

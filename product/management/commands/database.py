@@ -1,6 +1,8 @@
 #! /usr/bin/env python3
 # coding: utf-8
 """ """
+import argparse
+
 from django.core.management.base import BaseCommand
 
 from product.offapi.api_requests import ApiRequests
@@ -11,7 +13,6 @@ from product.offapi.charmax import Charmax
 class Command(BaseCommand):
     def databasefill(self):
         """ """
-        print("Loading...")
         # Retrieves the maximum number of characters for the fields.
         Fields_charmax = Charmax.characters_max()
         print("Fields_charmax return :", Fields_charmax, type(Fields_charmax))

@@ -16,7 +16,6 @@ def insertdb(Api_data):
     for product in Api_data:
         try:
             with transaction.atomic():
-                # print(product)
                 Brands_instance = Brands.objects.get_or_create(
                     brand=product["brands"],
                 )
@@ -44,9 +43,9 @@ def insertdb(Api_data):
                     NutriscoreGrades=NutriscoreGrades_instance[0],
                 )
                 product_count += 1
-        except IntegrityError:
+        except IntegrityError as exception:
             count += 1
-            print("IntegrityError count :", count)
+            print("IntegrityError count :", count, exception.args[0])
             pass
     print("Inserted products count :", product_count)
 

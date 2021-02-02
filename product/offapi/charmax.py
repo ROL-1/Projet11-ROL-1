@@ -20,12 +20,6 @@ class Charmax:
 
         char_max = {}
         for field in PRODUCT_FIELDS.split(","):
-            # data = self.Log.request(
-            #     """SELECT column_name, character_maximum_length
-            #     FROM information_schema.columns WHERE column_name = '%s'
-            #     AND (DATA_TYPE = 'char' OR DATA_TYPE = 'varchar')"""
-            #     % (field)
-            # )
             data = Product._meta.get_field(field).max_length
             dict_data = {field: data}
             if data != None:
