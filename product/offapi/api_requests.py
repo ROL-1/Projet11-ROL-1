@@ -6,6 +6,7 @@ import json
 
 import requests
 
+
 from product.offapi.api_config import (
     CATEGORIES,
     FIELDS,
@@ -83,21 +84,18 @@ class ApiRequests:
         """Check 4 : if string is too long for database field."""
         # print(Fields_charmax)
         for field, string in product.items():
-            # print(field, string)
-            # Excludes verification for the 'injection' field.
-            if field != "injection":
-                # Check for fields with characters_max().
-                if field in Fields_charmax.keys():
-                    # Check for element with max length for 'stores'.
-                    # if field == "stores":
-                    #     if (
-                    #         len(max(string.split(","), key=len))
-                    #         > Fields_charmax[field]
-                    #     ):
-                    #         return "False"
-                    # else:
-                    if len(string) > Fields_charmax[field]:
-                        return "False"
+            # Check for fields with characters_max().
+            if field in Fields_charmax.keys():
+                # Check for element with max length for 'stores'.
+                # if field == "stores":
+                #     if (
+                #         len(max(string.split(","), key=len))
+                #         > Fields_charmax[field]
+                #     ):
+                #         return "False"
+                # else:
+                if len(string) > Fields_charmax[field]:
+                    return "False"
 
     def products_nb(self, cleaned_scraped, category):
         """Check how many products by categories are suitables."""
@@ -109,6 +107,7 @@ class ApiRequests:
         if products_nb < MIN_PROD:
             cat_filled = False
         else:
+            print(category, "filled")
             cat_filled = True
         return cat_filled
 

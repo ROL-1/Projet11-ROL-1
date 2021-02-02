@@ -7,9 +7,7 @@
 from product.models import (
     Product,
     Categories,
-    NutriscoreGrades,
     Brands,
-    CodesProductsOff,
 )
 
 
@@ -18,12 +16,10 @@ class Charmax:
 
     def characters_max():
         """Retrieve the maximum number of characters for the fields."""
-        FIELDS = "generic_name_fr,product_name_fr,sugars_100g,salt_100g,\
-saturated_fat_100g,fat_100g,url,image_url"
+        PRODUCT_FIELDS = "generic_name_fr,product_name_fr,url,image_url"
 
         char_max = {}
-        for field in FIELDS.split(","):
-            print(field)
+        for field in PRODUCT_FIELDS.split(","):
             # data = self.Log.request(
             #     """SELECT column_name, character_maximum_length
             #     FROM information_schema.columns WHERE column_name = '%s'
@@ -34,5 +30,10 @@ saturated_fat_100g,fat_100g,url,image_url"
             dict_data = {field: data}
             if data != None:
                 char_max.update(dict_data)
-            print(char_max)
+        data_cat = Categories._meta.get_field("category").max_length
+        if data_cat != None:
+            char_max.update({"categories": data_cat})
+        data_brand = Brands._meta.get_field("brand").max_length
+        if data_brand != None:
+            char_max.update({"brands": data_brand})
         return char_max
