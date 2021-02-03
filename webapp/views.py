@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.template import loader
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 from product.offapi.api_config import CATEGORIES
 from product.models import (
@@ -15,51 +15,49 @@ from product.models import (
 
 
 def contact(request):
-    template = loader.get_template("webapp/contact.html")
-    return HttpResponse(template.render(request=request))
+    return render(request, "webapp/contact.html")
 
 
 def home(request):
-    template = loader.get_template("webapp/home.html")
     context = {"CATEGORIES": CATEGORIES}
-    return HttpResponse(template.render(context, request=request))
+    return render(request, "webapp/home.html", context)
 
 
 def product(request):
-    template = loader.get_template("webapp/product.html")
-    return HttpResponse(template.render(request=request))
+    return render(request, "webapp/product.html")
 
 
 def legal(request):
-    template = loader.get_template("webapp/legal.html")
-    return HttpResponse(template.render(request=request))
+    return render(request, "webapp/legal.html")
 
 
 def results(request):
-    template = loader.get_template("webapp/results.html")
-    return HttpResponse(template.render(request=request))
-
-
-def search(request):
     # Get user input
     query = request.GET["query"]
-    # Reaction if input empty : # TC : BLOQUER ENVOIS FORMULAIRE VIDE, (puis inutile).
-    if not query:
-        message = "Aucun produit demandé"
+    # # Reaction if input empty : # TC : BLOQUER ENVOIS FORMULAIRE VIDE, (puis inutile).
+    # if not query:
+    #     message = "Aucun produit demandé"
+    # else:
+    # Retrive information from database ("icontains" : case-insensitive) # TC [:1]
+    results = Product.objects.filter(product_name_fr__icontains=query)
+    if not results:
+        # If not found, search in "generic_name_fr"
+        results = Product.objects.filter(generic_name_fr__icontains=query)
+        if not results:  # remplace by get or 404 ?
+            # Reaction if no result. # TC template 404
+            pass
     else:
-        # Retrive information from database ("icontains" : case-insensitive)
-        search = Product.objects.filter(product_name_fr__icontains=query)
-        if not search:
-            # If not found, search in "generic_name_fr"
-            search = Product.objects.filter(generic_name_fr__icontains=query)
-            if not search:
-                # Reaction if no result. # TC template
-                message = "Aucun produit trouvé"
-        else:
-            # Reaction if results finded.
-            formatted_results = [
-                "<li>{}</li>".format(product.product_name_fr)
-                for product in search
-            ]
-            message = """<ul>{}</ul>""".format("\n".join(formatted_results))
-    return HttpResponse(message)
+        # Reaction if results found
+        # Number of products by pages
+        paginator = Paginator(results, 6)
+        # Get current page number
+        page = request.GET.get("page")
+        try:
+            products = paginator.page(page)
+        except PageNotAnInteger:
+            products = paginator.page(1)
+        except EmptyPage:
+            products = paginator.page(paginator.num_pages)
+
+        context = {"products": products}
+    return render(request, "webapp/results.html", context)
