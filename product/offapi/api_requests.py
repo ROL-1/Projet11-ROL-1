@@ -80,7 +80,6 @@ class ApiRequests:
 
     def string_length(self, Fields_charmax, product):
         """Check 4 : if string is too long for database field."""
-        # print(Fields_charmax)
         for field, string in product.items():
             # Check for fields with characters_max().
             if field in Fields_charmax.keys():

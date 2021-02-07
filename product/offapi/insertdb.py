@@ -8,9 +8,28 @@ from product.models import (
     CodesProductsOff,
 )
 
+import os
+
+
+def deletedata():
+    """Clear datas from Product tables and associates (not Users)."""
+    Product.objects.all().delete()
+    Categories.objects.all().delete()
+    NutriscoreGrades.objects.all().delete()
+    Brands.objects.all().delete()
+    CodesProductsOff.objects.all().delete()
+
 
 def insertdb(Api_data):
     """Use Django Orm to fill database."""
+    # Fill Nutriscoregrades table
+    grades = ["a", "b", "c", "d", "e"]
+    i = 1
+    for grade in grades:
+        NutriscoreGrades.objects.get_or_create(pk=i, nutriscore_grade=grade)
+        i += 1
+
+    # Fill Product table and others
     count = 0
     product_count = 0
     for product in Api_data:

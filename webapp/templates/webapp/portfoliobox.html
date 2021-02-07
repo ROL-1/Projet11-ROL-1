@@ -7,7 +7,7 @@
         <div class="bordered">
             <object class="img-fluid" data="{{ product.image_url }}" type="image/png"><img class="img-fluid"
                     src="{% static 'webapp/assets/img/page/OFF_not_found.png' %}" alt="not found image"></object>
-            <a class="portfolio-box-caption" href="http://127.0.0.1:8000/webapp/results/?query={{ product }}">
+            <a class="portfolio-box-caption" href="http://127.0.0.1:8000/webapp/results/?query={{ product.id }}">
                 <div class="project-name">Cliquez ici pour sélectionner ce produit.</div>
             </a>
         </div>

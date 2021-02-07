@@ -33,19 +33,17 @@ def legal(request):
 
 def results(request):
     # Get user input
-    query = request.GET["query"]
-    # # Reaction if input empty : # TC : BLOQUER ENVOIS FORMULAIRE VIDE, (puis inutile).
-    # if not query:
-    #     message = "Aucun produit demandé"
-    # else:
-    # Retrive information from database ("icontains" : case-insensitive)
-    results = Product.objects.filter(product_name_fr__icontains=query)
-    if not results:
-        # If not found, search in "generic_name_fr"
-        results = Product.objects.filter(generic_name_fr__icontains=query)
-        if not results:  # remplace by get or 404 ?
-            # Reaction if no result. # TC template 404
-            pass
+    product_id = request.GET["query"]
+    # Retrive information from database
+    product = Product.objects.get(id=product_id)
+    category = product.Categories_id
+    nutriscore = product.NutriscoreGrades_id
+    results = Product.objects.filter(Categories=category).filter(
+        NutriscoreGrades_id__lt=nutriscore
+    )
+    if not results:  # remplace by get or 404 ?
+        # Reaction if no result. # TC template 404
+        pass
     else:
         # Reaction if results found
         # Number of products by pages
@@ -59,7 +57,11 @@ def results(request):
         except EmptyPage:
             products = paginator.page(paginator.num_pages)
 
-        context = {"products": products, "query": query}
+        context = {
+            "products": products,
+            "product_id": product_id,
+            "product": product,
+        }
     return render(request, "webapp/results.html", context)
 
 
