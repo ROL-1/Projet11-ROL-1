@@ -21,8 +21,14 @@
     {% endwith %}
     <div class="text-center text-uppercase font-weight-bold">{{ product }}</div>
 
-    <a href="###">
-        <div class="text-center text-uppercase font-weight-bold"><i class="fas fa-save"></i> SAUVEGARDER</div>
-    </a>
+    <!-- product.id -->
+    <form method="post" action="{% url 'save' %}">
+        {% csrf_token %}
+        <div class="text-center text-uppercase font-weight-bold"><i class="fas fa-save"></i>
+            <input class="btn" type="submit" value="SAUVEGARDER" title="Sauvegarder dans vos favoris.">
+
+        </div>
+    </form>
+
 </div>
 {% endfor %}

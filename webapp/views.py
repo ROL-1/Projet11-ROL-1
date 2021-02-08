@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.template import loader
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.contrib.auth.decorators import login_required
 
 from product.offapi.api_config import CATEGORIES
 from product.models import (
@@ -10,6 +11,7 @@ from product.models import (
     NutriscoreGrades,
     CodesProductsOff,
 )
+from user.models import Favorites
 
 # Create your views here.
 
@@ -95,3 +97,15 @@ def search(request):
 
         context = {"products": products, "query": query}
     return render(request, "webapp/search.html", context)
+
+
+# @login_required
+def save(request, product_id):
+    print("#########################SAVE###########################")
+    print("product_id", product_id)
+    Favorites.objects.get_or_create(
+        Product_id=product_id, CustomUser_id=request.user.id
+    )
+    print("#########################SAVED###########################")
+    return redirect("index")
+
