@@ -26,7 +26,12 @@ def home(request):
 
 
 def product(request):
-    return render(request, "webapp/product.html")
+    product_id = request.GET["query"]
+    product = Product.objects.get(id=product_id)
+    context = {
+        "product": product,
+    }
+    return render(request, "webapp/product.html", context)
 
 
 def legal(request):
@@ -35,9 +40,9 @@ def legal(request):
 
 def results(request):
     # Get user input
-    product_id = request.GET["query"]
+    query = request.GET["query"]
     # Retrive information from database
-    product = Product.objects.get(id=product_id)
+    product = Product.objects.get(id=query)
     category = product.Categories_id
     nutriscore = product.NutriscoreGrades_id
     results = get_list_or_404(
@@ -56,8 +61,9 @@ def results(request):
 
     context = {
         "products": products,
-        "product_id": product_id,
+        "product_id": query,
         "product": product,
+        "query": query,
     }
     return render(request, "webapp/results.html", context)
 

@@ -27,20 +27,22 @@
             <div class="container-fluid p-0">
                 <div class="row no-gutters center">
                     {% include 'webapp/portfoliobox.html'%}
-                    <i class="pager">
-                        page {{ products.number }} sur {{ products.paginator.num_pages }}<br />
-                        {% if products.has_previous %}
-                        <a class="col-sm-2 btn btn-primary"
-                            href="?query={{ product_id }}&page={{ products.previous_page_number }}">Précédent</a>
-                        {% endif %}
-                        {% if products.has_next %}
-                        <a class="col-sm-2 btn btn-primary"
-                            href="?query={{ product_id }}&page={{ products.next_page_number }}">Suivant</a>
-                        {% endif %}
-                    </i>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="container text-center">
+        <ul class="pager">
+            page {{ products.number }} sur {{ products.paginator.num_pages }}<br />
+            {% if products.has_previous %}
+            <a class="col-sm-2 btn btn-primary"
+                href="?query={{ query }}&page={{ products.previous_page_number }}">Précédent</a>
+            {% endif %}
+            {% if products.has_next %}
+            <a class="col-sm-2 btn btn-primary"
+                href="?query={{ query }}&page={{ products.next_page_number }}">Suivant</a>
+            {% endif %}
+        </ul>
     </div>
 </section>
 

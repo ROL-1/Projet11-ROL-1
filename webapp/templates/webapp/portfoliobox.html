@@ -12,6 +12,10 @@
             <a class="portfolio-box-caption" href="http://127.0.0.1:8000/webapp/results/?query={{ product.id }}">
                 <div class="project-name">Cliquez ici pour sélectionner ce produit.</div>
             </a>
+            {% else %}
+            <a class="portfolio-box-caption" href="http://127.0.0.1:8000/webapp/product/?query={{ product.id }}">
+                <div class="project-name">Cliquez ici pour voir la fiche produit.</div>
+            </a>
             {% endif %}
             {% with product.NutriscoreGrades.nutriscore_grade|slugify as image_path %}
             {% with 'webapp/assets/img/results/'|add:image_path|add:'.png' as image_path %}
@@ -22,9 +26,6 @@
         </div>
         <div class="text-center font-weight-bold">{{ product }}</div>
     </div>
-
-
-
     {% url 'results' as my_view %}
     {% if request.path == my_view %}
     {% if user.is_authenticated %}
