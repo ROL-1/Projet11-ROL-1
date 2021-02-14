@@ -2,4 +2,8 @@
   text-align: center;
   list-style: none;
 }
+
+.masthead__text {
+  font-size: 2em !important;
+}
 /*# sourceMappingURL=styles_results.css.map */

@@ -2,33 +2,45 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'webapp/css/styles_portfoliobox.css' %}" />
 {% for product in products %}
-<div class="h-100 col-lg-4 col-sm-6 px-5 mt-5">
-    <div class="portfolio-box">
+<div class="h-100 col-lg-4 mt-5 text-center">
+    <div class="portfolio-box text-center">
         <div class="bordered">
-            <object class="img-fluid" data="{{ product.image_url }}" type="image/png"><img class="img-fluid"
+            <object class="img-product" data="{{ product.image_url }}" type="image/png"><img class=" img-product"
                     src="{% static 'webapp/assets/img/page/OFF_not_found.png' %}" alt="not found image"></object>
+            {% url 'search' as my_view %}
+            {% if request.path == my_view %}
             <a class="portfolio-box-caption" href="http://127.0.0.1:8000/webapp/results/?query={{ product.id }}">
                 <div class="project-name">Cliquez ici pour sélectionner ce produit.</div>
             </a>
+            {% endif %}
+            {% with product.NutriscoreGrades.nutriscore_grade|slugify as image_path %}
+            {% with 'webapp/assets/img/results/'|add:image_path|add:'.png' as image_path %}
+            <object class="nutriscore" data="{% static image_path %}" type="image/png"><img class="nutriscore"
+                    src="{% static 'webapp/assets/img/results/err.png' %}" alt="error image"></object>
+            {% endwith %}
+            {% endwith %}
         </div>
+        <div class="text-center font-weight-bold">{{ product }}</div>
     </div>
-    {% with product.NutriscoreGrades.nutriscore_grade|slugify as image_path %}
-    {% with 'webapp/assets/img/results/'|add:image_path|add:'.png' as image_path %}
-    <object class="img-fluid nutriscore" data="{% static image_path %}" type="image/png"><img
-            class="img-fluid nutriscore" src="{% static 'webapp/assets/img/results/err.png' %}"
-            alt="error image"></object>
-    {% endwith %}
-    {% endwith %}
-    <div class="text-center text-uppercase font-weight-bold">{{ product }}</div>
 
-    <!-- product.id -->
-    <form method="post" action="{% url 'save' product.id %}">
+
+
+    {% url 'results' as my_view %}
+    {% if request.path == my_view %}
+    {% if user.is_authenticated %}
+    <form method="post" action="{% url 'favorites' product_id=product.id %}">
         {% csrf_token %}
         <div class="text-center text-uppercase font-weight-bold"><i class="fas fa-save"></i>
             <input class="btn" type="submit" value="SAUVEGARDER" title="Sauvegarder dans vos favoris.">
 
         </div>
     </form>
+    {% else %}
+    <div class="text-center small">
+        <p>Connectez vous pour pouvoir sauvegarder</p>
+    </div>
+    {% endif %}
+    {% endif %}
 
 </div>
 {% endfor %}

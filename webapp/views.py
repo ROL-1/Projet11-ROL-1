@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_list_or_404
 from django.template import loader
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.contrib.auth.decorators import login_required
@@ -40,48 +40,36 @@ def results(request):
     product = Product.objects.get(id=product_id)
     category = product.Categories_id
     nutriscore = product.NutriscoreGrades_id
-    results = Product.objects.filter(Categories=category).filter(
-        NutriscoreGrades_id__lt=nutriscore
+    results = get_list_or_404(
+        Product, Categories=category, NutriscoreGrades_id__lt=nutriscore
     )
-    if not results:  # remplace by get or 404 ?
-        # Reaction if no result. # TC template 404
-        pass
-    else:
-        # Reaction if results found
-        # Number of products by pages
-        paginator = Paginator(results, 6)
-        # Get current page number
-        page = request.GET.get("page")
-        try:
-            products = paginator.page(page)
-        except PageNotAnInteger:
-            products = paginator.page(1)
-        except EmptyPage:
-            products = paginator.page(paginator.num_pages)
+    # Number of products by pages
+    paginator = Paginator(results, 6)
+    # Get current page number
+    page = request.GET.get("page")
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
 
-        context = {
-            "products": products,
-            "product_id": product_id,
-            "product": product,
-        }
+    context = {
+        "products": products,
+        "product_id": product_id,
+        "product": product,
+    }
     return render(request, "webapp/results.html", context)
 
 
 def search(request):
     # Get user input
     query = request.GET["query"]
-    # # Reaction if input empty : # TC : BLOQUER ENVOIS FORMULAIRE VIDE, (puis inutile).
-    # if not query:
-    #     message = "Aucun produit demandé"
-    # else:
     # Retrive information from database ("icontains" : case-insensitive)
-    results = Product.objects.filter(product_name_fr__icontains=query)
+    results = get_list_or_404(Product, product_name_fr__icontains=query)
     if not results:
         # If not found, search in "generic_name_fr"
-        results = Product.objects.filter(generic_name_fr__icontains=query)
-        if not results:  # remplace by get or 404 ?
-            # Reaction if no result. # TC template 404
-            pass
+        results = get_list_or_404(Product, generic_name_fr__icontains=query)
     else:
         # Reaction if results found
         # Number of products by pages
@@ -100,7 +88,7 @@ def search(request):
 
 
 # @login_required
-def save(request, product_id):
+def favorites(request, product_id):
     print("#########################SAVE###########################")
     print("product_id", product_id)
     Favorites.objects.get_or_create(
