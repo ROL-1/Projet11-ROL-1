@@ -6,6 +6,7 @@ from . import views
 
 urlpatterns = [
     path("contact/", views.contact, name="contact"),
+    path("delete/<int:product_id>/", views.delete, name="delete"),
     path("favorites/<int:product_id>/", views.favorites, name="favorites"),
     path("legal/", views.legal, name="legal"),
     path("myfavorites/", views.myfavorites, name="myfavorites"),

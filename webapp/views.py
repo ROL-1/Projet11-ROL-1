@@ -21,6 +21,17 @@ def contact(request):
 
 
 @login_required
+def delete(request, product_id):
+    print("#########################ERASE###########################")
+    print("product_id", product_id)
+    Favorites.objects.filter(
+        Product_id=product_id, CustomUser_id=request.user.id
+    ).delete()
+    print("#########################ERASED###########################")
+    return redirect("index")
+
+
+@login_required
 def favorites(request, product_id):
     print("#########################SAVE###########################")
     print("product_id", product_id)

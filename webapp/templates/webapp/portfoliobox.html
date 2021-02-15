@@ -26,6 +26,15 @@
         </div>
         <div class="text-center font-weight-bold">{{ product }}</div>
     </div>
+    {% url 'myfavorites' as my_view2 %}
+    {% if request.path == my_view2 %}
+    <form method="post" action="{% url 'delete' product_id=product.id %}">
+        {% csrf_token %}
+        <div class="text-center text-uppercase font-weight-bold"><i class="fas fa-eraser"></i>
+            <input class="btn" type="submit" value="SUPPRIMER" title="Supprimer de vos favoris.">
+        </div>
+    </form>
+    {% endif %}
     {% url 'results' as my_view %}
     {% if request.path == my_view %}
     {% if user.is_authenticated %}
@@ -33,7 +42,6 @@
         {% csrf_token %}
         <div class="text-center text-uppercase font-weight-bold"><i class="fas fa-save"></i>
             <input class="btn" type="submit" value="SAUVEGARDER" title="Sauvegarder dans vos favoris.">
-
         </div>
     </form>
     {% else %}
