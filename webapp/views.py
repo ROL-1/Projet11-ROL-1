@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_list_or_404
+from django.shortcuts import render, get_list_or_404, get_object_or_404
 from django.template import loader
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.contrib.auth.decorators import login_required
@@ -20,9 +20,49 @@ def contact(request):
     return render(request, "webapp/contact.html")
 
 
+@login_required
+def favorites(request, product_id):
+    print("#########################SAVE###########################")
+    print("product_id", product_id)
+    Favorites.objects.get_or_create(
+        Product_id=product_id, CustomUser_id=request.user.id
+    )
+    print("#########################SAVED###########################")
+    return redirect("index")
+
+
 def home(request):
     context = {"CATEGORIES": CATEGORIES}
     return render(request, "webapp/home.html", context)
+
+
+def legal(request):
+    return render(request, "webapp/legal.html")
+
+
+@login_required
+def myfavorites(request):
+    favorites = get_list_or_404(Favorites)
+    print(favorites)
+    results = []
+    for favorite in favorites:
+        results.append(get_object_or_404(Product, id=favorite.Product_id))
+    print(results)
+    # Number of products by pages
+    paginator = Paginator(results, 6)
+    # Get current page number
+    page = request.GET.get("page")
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+
+    context = {
+        "products": products,
+    }
+    return render(request, "webapp/myfavorites.html", context)
 
 
 def product(request):
@@ -32,10 +72,6 @@ def product(request):
         "product": product,
     }
     return render(request, "webapp/product.html", context)
-
-
-def legal(request):
-    return render(request, "webapp/legal.html")
 
 
 def results(request):
@@ -91,15 +127,4 @@ def search(request):
 
         context = {"products": products, "query": query}
     return render(request, "webapp/search.html", context)
-
-
-# @login_required
-def favorites(request, product_id):
-    print("#########################SAVE###########################")
-    print("product_id", product_id)
-    Favorites.objects.get_or_create(
-        Product_id=product_id, CustomUser_id=request.user.id
-    )
-    print("#########################SAVED###########################")
-    return redirect("index")
 
