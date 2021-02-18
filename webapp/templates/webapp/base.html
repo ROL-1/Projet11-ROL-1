@@ -20,6 +20,11 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link rel="stylesheet" type="text/css" href="{% static 'webapp/css/externals/bootstrap-creative.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'webapp/css/styles_base.css' %}" />
+    <!-- Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.css" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -36,9 +41,19 @@
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                    <form id="search-nav" action="/" method="get">
+                    <form id="search-nav" action="" method="get">
+                        {% csrf_token %}
+                        {{ form.as_p }}
                         <input class="form-control search-nav" type="text" placeholder="Chercher">
                     </form>
+                    <script>
+                        document.addEventListener('dal-init-function', function () {
+                            yl.registerFunction('your_autocomplete_function', function ($, element) {
+                                var $element = $(element);
+                                // autocomplete function here
+                            });
+                        })
+                    </script>
                     {% if user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'myaccount' %}">
                             <i class="fas fa-user fa-3x"></i>
@@ -89,6 +104,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
     <!-- Core theme JS-->
     <script src="{% static 'webapp/js/scripts.js' %}"></script>
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    {{ form.media}}
 </body>
 
 </html>

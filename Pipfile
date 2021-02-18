@@ -14,6 +14,8 @@ dj-database-url = "*"
 gunicorn = "*"
 django-heroku = "*"
 requests = "*"
+django-autocomplete-light = "*"
+django-querysetsequence = "*"
 
 [requires]
 python_version = "3.8"

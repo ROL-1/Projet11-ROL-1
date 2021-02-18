@@ -24,6 +24,13 @@
                         </div>
                     </div>
                 </form>
+                {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                    <p>{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
                 <h3 class="small font-weight-bold">Vous pouvez chercher un produit dans les catégories suivantes :
                     <br />
                     {{ CATEGORIES|join:", "}}.
@@ -32,6 +39,7 @@
         </div>
     </div>
 </header>
+
 <!-- Page-->
 <section class="page-section main-section bg-primary">
     <div class="container">

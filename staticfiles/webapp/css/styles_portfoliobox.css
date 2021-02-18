@@ -1,0 +1,38 @@
+.nutriscore {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  top: -1em;
+  right: 0.2em;
+  height: 90px;
+  width: auto;
+}
+
+.bordered {
+  border: 0.3em solid white;
+  border-radius: 10px;
+  width: 12em;
+  height: 8em;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  margin: 0;
+  background-color: white;
+}
+
+.img-box {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-height: 100%;
+  min-width: 100%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.img-product {
+  height: 100%;
+}
+/*# sourceMappingURL=styles_portfoliobox.css.map */

@@ -8,7 +8,7 @@ from product.models import (
     CodesProductsOff,
 )
 
-import os
+import string
 
 
 def deletedata():
@@ -23,7 +23,7 @@ def deletedata():
 def insertdb(Api_data):
     """Use Django Orm to fill database."""
     # Fill Nutriscoregrades table
-    grades = ["a", "b", "c", "d", "e"]
+    grades = list(string.ascii_lowercase[0:4])
     i = 1
     for grade in grades:
         NutriscoreGrades.objects.get_or_create(pk=i, nutriscore_grade=grade)
