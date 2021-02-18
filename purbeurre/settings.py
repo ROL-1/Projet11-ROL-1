@@ -36,8 +36,10 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1", "lepurbeurre.herokuapp.com"]
 # Application definition
 
 INSTALLED_APPS = [
+    # Autocomplete
     "dal",
     "dal_select2",
+    # Django
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -45,6 +47,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_heroku",
+    # Miscellaneous
     "debug_toolbar",
     "product.apps.ProductConfig",
     "user.apps.UserConfig",
@@ -153,6 +156,7 @@ AUTH_USER_MODEL = "user.CustomUser"
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
 
+# BETTER HEROKU LOGS
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
