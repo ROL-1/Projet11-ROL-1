@@ -16,6 +16,7 @@ django-heroku = "*"
 requests = "*"
 django-autocomplete-light = "*"
 django-querysetsequence = "*"
+unidecode = "*"
 
 [requires]
 python_version = "3.8"
