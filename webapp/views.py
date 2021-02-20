@@ -19,7 +19,8 @@ from product.models import (
 )
 from user.models import Favorites
 
-# Create your views here.
+# Cleaner
+from .cleaner.cleaner import Cleaner
 
 # Autocomplete
 
@@ -54,24 +55,32 @@ def contact(request):
 
 @login_required
 def delete(request, product_id):
-    print("#########################ERASE###########################")
-    print("product_id", product_id)
-    Favorites.objects.filter(
+    product = Product.objects.get(id=product_id)
+    favorite = Favorites.objects.filter(
         Product_id=product_id, CustomUser_id=request.user.id
     ).delete()
-    print("#########################ERASED###########################")
+    messages.success(
+        request, f"Le produit '{product}' a été retiré de vos favoris."
+    )
     return redirect("myfavorites")
 
 
 @login_required
 def favorites(request, product_id):
-    print("#########################SAVE###########################")
-    print("product_id", product_id)
-    Favorites.objects.get_or_create(
+    product = Product.objects.get(id=product_id)
+    favorite = Favorites.objects.get_or_create(
         Product_id=product_id, CustomUser_id=request.user.id
     )
-    print("#########################SAVED###########################")
-    return redirect("results")
+    if favorite[1]:
+        messages.success(
+            request, f"Le produit '{product}' a été ajouté à vos favoris."
+        )
+    else:
+        messages.info(
+            request, f"Le produit '{product}' est déjà dans vos favoris."
+        )
+
+    return redirect("myfavorites")
 
 
 def home(request):
@@ -88,11 +97,9 @@ def legal(request):
 @login_required
 def myfavorites(request):
     favorites = get_list_or_404(Favorites)
-    print(favorites)
     results = []
     for favorite in favorites:
         results.append(get_object_or_404(Product, id=favorite.Product_id))
-    print(results)
     # Number of products by pages
     paginator = Paginator(results, 6)
     # Get current page number
@@ -152,28 +159,33 @@ def results(request):
 def search(request):
     # Get user input
     query = request.GET["query"]
+    query_cleaned = Cleaner(query).query_cleaned
+    print("query_cleaned", query_cleaned)
     try:
         # Retrive information from database ("icontains" : case-insensitive)
-        results = get_list_or_404(Product, product_name_fr__icontains=query)
-        if not results:
-            # If not found, search in "generic_name_fr"
-            results = get_list_or_404(
-                Product, generic_name_fr__icontains=query
-            )
-        else:
-            # Reaction if results found
-            # Number of products by pages
-            paginator = Paginator(results, 6)
-            # Get current page number
-            page = request.GET.get("page")
-            try:
-                products = paginator.page(page)
-            except PageNotAnInteger:
-                products = paginator.page(1)
-            except EmptyPage:
-                products = paginator.page(paginator.num_pages)
+        results_lists = []
+        for word in query_cleaned:
+            results = get_list_or_404(Product, product_name_fr__icontains=word)
+            for product in results:
+                results_lists.append(product)
+            if not results:
+                # If not found, search in "generic_name_fr"
+                results = get_list_or_404(
+                    Product, generic_name_fr__icontains=word
+                )
+                for product in results:
+                    results_lists.append(product)
+        paginator = Paginator(results_lists, 6)
+        # Get current page number
+        page = request.GET.get("page")
+        try:
+            products = paginator.page(page)
+        except PageNotAnInteger:
+            products = paginator.page(1)
+        except EmptyPage:
+            products = paginator.page(paginator.num_pages)
 
-            context = {"products": products, "query": query}
+        context = {"products": products, "query": query}
     except:
         messages.add_message(
             request, messages.ERROR, "Aucun produit correspondant trouvé."

@@ -18,6 +18,13 @@
 <!-- Results -->
 <section class="page-section main-section bg-primary results">
     <div class="container">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+        </ul>
+        {% endif %}
         <!-- Portfolio-->
         <div id="portfolio">
             <div class="container-fluid p-0">

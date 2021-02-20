@@ -139,11 +139,6 @@ a:hover {
   background: rgba(134, 235, 230, 0.5);
 }
 
-.messages {
-  list-style-type: none;
-  color: #c45525;
-}
-
 /* Masthead */
 header.masthead {
   padding-top: 10rem;
@@ -202,4 +197,4 @@ header.masthead {
 .foot {
   background: #345a61 !important;
 }
-/*# sourceMappingURL=styles_base.css.map */
+/*# sourceMappingURL=styles_base.85e84efbe9ce.css.map */
