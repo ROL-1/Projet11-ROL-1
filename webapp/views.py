@@ -175,6 +175,8 @@ def search(request):
                 )
                 for product in results:
                     results_lists.append(product)
+
+        # Create pagination from 'results_lists'
         paginator = Paginator(results_lists, 6)
         # Get current page number
         page = request.GET.get("page")
