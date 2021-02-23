@@ -131,10 +131,10 @@ def results(request):
     query = request.GET["query"]
     # Retrive information from database
     product = Product.objects.get(id=query)
-    category = product.Categories_id
-    nutriscore = product.NutriscoreGrades_id
+    category_id = product.Categories_id
+    nutriscore_id = product.NutriscoreGrades_id
     results = get_list_or_404(
-        Product, Categories=category, NutriscoreGrades_id__lt=nutriscore
+        Product, Categories=category_id, NutriscoreGrades_id__lt=nutriscore_id
     )
     # Number of products by pages
     paginator = Paginator(results, 6)

@@ -10,14 +10,6 @@ from django.views import generic
 from django.contrib.auth.decorators import login_required
 
 
-# Create your views here.
-
-
-def index(request):
-    message = "Bienvenue sur l'application 'user'."
-    return HttpResponse(message)
-
-
 @login_required(login_url="login")
 def myaccount(request):
     template = loader.get_template("user/myaccount.html")
