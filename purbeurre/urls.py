@@ -24,7 +24,7 @@ urlpatterns = [
     url(r"^product/", include("product.urls")),
     url(r"^user/", include("user.urls")),
     url(r"^webapp/", include("webapp.urls")),
-    url(r"^admin/", admin.site.urls),
+    url(r"^admin/", admin.site.urls, name="admin"),
 ]
 
 if settings.DEBUG:

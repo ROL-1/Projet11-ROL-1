@@ -17,6 +17,7 @@ requests = "*"
 django-autocomplete-light = "*"
 django-querysetsequence = "*"
 unidecode = "*"
+coverage = "*"
 
 [requires]
 python_version = "3.8"

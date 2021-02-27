@@ -160,25 +160,26 @@ def search(request):
     # Get user input
     query = request.GET["query"]
     query_cleaned = Cleaner(query).query_cleaned
-    print("query_cleaned", query_cleaned)
+
     try:
-        # Retrive information from database ("icontains" : case-insensitive)
+        # Retrive information from database.
         results_lists = []
+        # Create list for each word.
         for word in query_cleaned:
-            results = get_list_or_404(Product, product_name_fr__icontains=word)
+            results = get_list_or_404(Product, product_name_fr__contains=word)
             for product in results:
                 results_lists.append(product)
             if not results:
-                # If not found, search in "generic_name_fr"
+                # If not found, search in "generic_name_fr".
                 results = get_list_or_404(
-                    Product, generic_name_fr__icontains=word
+                    Product, generic_name_fr__contains=word
                 )
                 for product in results:
                     results_lists.append(product)
 
-        # Create pagination from 'results_lists'
+        # Create pagination from 'results_lists'.
         paginator = Paginator(results_lists, 6)
-        # Get current page number
+        # Get current page number.
         page = request.GET.get("page")
         try:
             products = paginator.page(page)

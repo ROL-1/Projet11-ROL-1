@@ -24,7 +24,7 @@ class TestWiews(TestCase):
         name = "user1"
         email = "user1@email.com"
         psswd = "psswd123"
-        cls.user = CustomUser.objects.create(
+        user = CustomUser.objects.create(
             username=name, email=email, password=psswd
         )
         # Log user
@@ -33,12 +33,16 @@ class TestWiews(TestCase):
         # Query
         cls.query = "product_name_fr"
         # Product
-        cls.code = CodesProductsOff.objects.create(code=000)
-        cls.brand = Brands.objects.create(brand="test_brand")
-        cls.nutriscore_grade = NutriscoreGrades.objects.create(
+        code = CodesProductsOff.objects.create(code=0)
+        brand = Brands.objects.create(brand="test_brand")
+        # create nutriscore grade for substitute (need lower id)
+        nutriscore_grade_sub = NutriscoreGrades.objects.create(
+            nutriscore_grade="a"
+        )
+        nutriscore_grade = NutriscoreGrades.objects.create(
             nutriscore_grade="c"
         )
-        cls.category = Categories.objects.create(category="test_category")
+        category = Categories.objects.create(category="test_category")
         cls.product = Product.objects.create(
             product_name_fr="test_product_name_fr",
             generic_name_fr="test_generic_name_fr",
@@ -46,17 +50,40 @@ class TestWiews(TestCase):
             saturated_fat_100g=2.2,
             salt_100g=3.3,
             sugars_100g=4.4,
+            url="test_url.com2",
+            image_url="test_url.com2",
+            CodesProductsOff=code,
+            Brands=brand,
+            NutriscoreGrades=nutriscore_grade,
+            Categories=category,
+        )
+        # Create substitute
+        code_sub = CodesProductsOff.objects.create(code=1)
+        substitute = Product.objects.create(
+            product_name_fr="test_product_name_fr2",
+            generic_name_fr="test_generic_name_fr2",
+            fat_100g=1.1,
+            saturated_fat_100g=2.2,
+            salt_100g=3.3,
+            sugars_100g=4.4,
             url="test_url.com",
             image_url="test_url.com",
-            CodesProductsOff=cls.code,
-            Brands=cls.brand,
-            NutriscoreGrades=cls.nutriscore_grade,
-            Categories=cls.category,
+            CodesProductsOff=code_sub,
+            Brands=brand,
+            NutriscoreGrades=nutriscore_grade_sub,
+            Categories=category,
         )
         # Favorite for User
-        cls.favorite = Favorites.objects.create(
-            Product_id=cls.product.id, CustomUser_id=cls.user.id
+        favorite = Favorites.objects.create(
+            Product_id=cls.product.id, CustomUser_id=user.id
         )
+
+    def test_if_view_admin_return_302(self):
+        """
+        1. Check if "response.status_code" is "302".
+        """
+        response = self.client.get(reverse("admin:index"))
+        self.assertEqual(response.status_code, 302)
 
     def test_if_view_contact_return_200_and_use_suitables_templates(self):
         """
@@ -70,24 +97,26 @@ class TestWiews(TestCase):
         with self.assertTemplateUsed("webapp/base.html"):
             render_to_string("webapp/contact.html")
 
-    # def test_if_view_delete_return_200_and_use_suitables_templates(self):
+    # def test_if_view_delete_return_302(self):
     #     """
-    #     1. Check if "response.status_code" is "200".
-    #     2. Check if suitables templates are used.
+    #     Check if "response.status_code" is "302".
     #     """
-    #     response = self.client.get(reverse("delete", self.product.id))
-    #     self.assertEqual(response.status_code, 200)
+    # form method="post" action="{% url 'delete' product_id=product.id %}
+    #     response = self.client.get(reverse("delete"))
+    #     self.assertEqual(response.status_code, 302)
+    #     # no templates used (redirect to "myfavorites.html")
 
-    # no templates used (redirect to "myfavorites.html")
+    # def test_if_view_favorites_return_302(self):
+    #     """
+    #     Check if "response.status_code" is "302".
+    #     """
 
-    # def test_if_view_favorites_return_200_and_use_suitables_templates(self):
-    #     """
-    #     1. Check if "response.status_code" is "200".
-    #     2. Check if suitables templates are used.
-    #     """
-    # response = self.client.post(reverse("favorites", self.product.id))
-    # self.assertEqual(response.status_code, 200)
-    # no templates used (redirect to "myfavorites.html")
+    #     # form method="post" action="{% url 'favorites' product_id=product.id %}">
+    #     response = self.client.get(
+    #         reverse("favorites", {"product_id": self.product.id})
+    #     )
+    #     self.assertEqual(response.status_code, 302)
+    #     # no templates used (redirect to "myfavorites")
 
     def test_if_view_home_return_200_and_use_suitables_templates(self):
         """
@@ -113,13 +142,13 @@ class TestWiews(TestCase):
         with self.assertTemplateUsed("webapp/base.html"):
             render_to_string("webapp/legal.html")
 
-    def test_if_view_myfavorites_return_200_and_use_suitables_templates(self):
+    def test_if_view_myfavorites_return_302_and_use_suitables_templates(self):
         """
-        1. Check if "response.status_code" is "200".
+        1. Check if "response.status_code" is "302".
         2. Check if suitables templates are used.
         """
         response = self.client.get(reverse("myfavorites"))
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
         with self.assertTemplateUsed("webapp/myfavorites.html"):
             render_to_string("webapp/myfavorites.html")
         with self.assertTemplateUsed("webapp/base.html"):
@@ -146,10 +175,10 @@ class TestWiews(TestCase):
         1. Check if "response.status_code" is "200".
         2. Check if suitables templates are used.
         """
-        # response = self.client.get(
-        #     reverse("results"), {"query": self.product.id}
-        # )
-        # self.assertEqual(response.status_code, 200)
+        response = self.client.get(
+            reverse("results"), {"query": self.product.id}
+        )
+        self.assertEqual(response.status_code, 200)
         with self.assertTemplateUsed("webapp/results.html"):
             render_to_string("webapp/results.html")
         with self.assertTemplateUsed("webapp/base.html"):
@@ -170,3 +199,4 @@ class TestWiews(TestCase):
             render_to_string("webapp/search.html")
         with self.assertTemplateUsed("webapp/portfoliobox.html"):
             render_to_string("webapp/search.html")
+
