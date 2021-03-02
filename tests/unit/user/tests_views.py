@@ -1,3 +1,5 @@
+"""Tests views for user app."""
+
 from django.test import TestCase, Client
 from django.urls import reverse
 from django.template.loader import render_to_string
@@ -24,7 +26,8 @@ class TestWiews(TestCase):
         c.login(username=name, password=psswd)
 
     def test_if_view_myaccount_return_302_and_use_suitables_templates(self):
-        """
+        """Test myaccount view.
+
         1. Check if "response.status_code" is "302".
         2. Check if suitables templates are used.
         """
@@ -36,7 +39,8 @@ class TestWiews(TestCase):
             render_to_string("user/myaccount.html")
 
     def test_if_view_signup_return_200_and_use_suitables_templates(self):
-        """
+        """Test signup view.
+        
         1. Check if "response.status_code" is "200".
         2. Check if suitables templates are used.
         """

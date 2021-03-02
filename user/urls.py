@@ -1,3 +1,5 @@
+"""urls for user app."""
+
 from django.conf.urls import url, include
 
 from . import views

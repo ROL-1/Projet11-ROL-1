@@ -1,3 +1,5 @@
+"""Tests database models for product app."""
+
 from django.test import TestCase
 
 from product.models import (
@@ -10,8 +12,11 @@ from product.models import (
 
 
 class ProductModelTest(TestCase):
+    """Tests for database models."""
+
     @classmethod
     def setUpTestData(cls):
+        """Create fake datas once for all tests and define 'product'."""
         CodesProductsOff.objects.create(code="8000070200289"),
         Brands.objects.create(brand="brandtest"),
         NutriscoreGrades.objects.create(nutriscore_grade="a"),
@@ -30,12 +35,10 @@ class ProductModelTest(TestCase):
             url="url@test.com",
             image_url="urlimage@test.com",
         )
-
-    def setUp(self):
-        self.product = Product.objects.get(id=1)
-        pass
+        cls.product = Product.objects.get(id=1)
 
     def test_product_labels(self):
+        """Test labels."""
         fields_list = [
             "CodesProductsOff_id",
             "Brands_id",
@@ -68,6 +71,7 @@ class ProductModelTest(TestCase):
 
     # max_length #
     def test_product_max_length(self):
+        """Test product max length some fields."""
         fields_list = ["product_name_fr", "generic_name_fr"]
         max_lengths_list = [100, 100]
         for field, max_length in zip(fields_list, max_lengths_list):
@@ -76,6 +80,7 @@ class ProductModelTest(TestCase):
 
     # max_digits #
     def test_product_max_digits(self):
+        """Test product max digits for some fields."""
         fields_list = [
             "fat_100g",
             "saturated_fat_100g",
@@ -89,6 +94,7 @@ class ProductModelTest(TestCase):
 
     # decimal_places #
     def test_product_decimal_places(self):
+        """Test product decimal places for some fields."""
         fields_list = [
             "fat_100g",
             "saturated_fat_100g",
@@ -102,44 +108,52 @@ class ProductModelTest(TestCase):
 
     # __str__ #
     def test_object_name_is_product_name_fr(self):
+        """Test product name."""
         expected_object_name = self.product.product_name_fr
         self.assertEquals(expected_object_name, str(self.product))
 
     def test_object_name_is_category(self):
+        """Test category name."""
         categories = Categories.objects.get(id=1)
         expected_object_name = categories.category
         self.assertEquals(expected_object_name, str(categories))
 
 
 class CodesProductsOffModelTest(TestCase):
-    # Label #
+    """Test table CodesProductsOFF."""
+
     def test_code_label(self):
+        """Test code label."""
         field_label = CodesProductsOff._meta.get_field("code").verbose_name
         self.assertEquals(field_label, "code")
 
 
 class BrandsTest(TestCase):
-    # Label #
+    """Tests table Brands."""
+
     def test_brand_label(self):
+        """Test brand label."""
         field_label = Brands._meta.get_field("brand").verbose_name
         self.assertEquals(field_label, "brand")
 
-    # max_length #
     def test_brand_max_length(self):
+        """Test brand max length."""
         max_length = Brands._meta.get_field("brand").max_length
         self.assertEquals(max_length, 75)
 
 
 class NutriscoreGradesTest(TestCase):
-    # Label #
+    """Tests table NutriscoreGrades."""
+
     def test_nutriscore_grade_label(self):
+        """Test nutriscore_grade label."""
         field_label = NutriscoreGrades._meta.get_field(
             "nutriscore_grade"
         ).verbose_name
         self.assertEquals(field_label, "nutriscore grade")
 
-    # max_length #
     def test_nutriscore_grade_max_length(self):
+        """Test nutriscore_grade max_length."""
         max_length = NutriscoreGrades._meta.get_field(
             "nutriscore_grade"
         ).max_length
@@ -147,15 +161,17 @@ class NutriscoreGradesTest(TestCase):
 
 
 class CategoriesTest(TestCase):
-    # Label #
+    """Tests table Categories."""
+
     def test_categories_Label(self):
+        """Test categories label."""
         fields_list = ["category", "parent_id"]
         labels_list = ["category", "parent"]
         for field, label in zip(fields_list, labels_list):
             field_label = Categories._meta.get_field(field).verbose_name
             self.assertEquals(field_label, label)
 
-    # max_length #
     def test_category_max_length(self):
+        """Test category max length."""
         max_length = Categories._meta.get_field("category").max_length
         self.assertEquals(max_length, 75)

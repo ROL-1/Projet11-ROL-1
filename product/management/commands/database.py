@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 # coding: utf-8
-""" """
+"""Custom command to clear and fill database from api datas."""
 
 from django.core.management.base import BaseCommand
 
@@ -10,8 +10,10 @@ from product.offapi.charmax import Charmax
 
 
 class Command(BaseCommand):
+    """Custom command to clear and fill database from api datas."""
+
     def databasefill(self):
-        """ """
+        """Command to clear and fill database from api datas."""
         # Retrieves the maximum number of characters for the fields.
         Fields_charmax = Charmax.characters_max()
         # Retrives datas from Api and reject unsuitable datas.
@@ -23,5 +25,6 @@ class Command(BaseCommand):
         print("Database installed.")
 
     def handle(self, *args, **options):
+        """Call customs commands."""
         self.databasefill()
         return

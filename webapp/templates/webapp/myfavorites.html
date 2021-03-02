@@ -34,6 +34,7 @@
             </div>
         </div>
     </div>
+    {%if products %}
     <div class="container text-center">
         <ul class="pager">
             page {{ products.number }} sur {{ products.paginator.num_pages }}<br />
@@ -47,6 +48,7 @@
             {% endif %}
         </ul>
     </div>
+    {% endif %}
 </section>
 
 {% endblock %}

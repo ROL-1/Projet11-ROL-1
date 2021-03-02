@@ -1,3 +1,5 @@
+"""Clear and fill the database."""
+
 from django.db import transaction, IntegrityError
 
 from product.models import (

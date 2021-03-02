@@ -1,3 +1,5 @@
+"""views for webapp app."""
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
@@ -50,11 +52,13 @@ class ProductAutocomplete(autocomplete.Select2QuerySetView):
 
 
 def contact(request):
+    """View contact."""
     return render(request, "webapp/contact.html")
 
 
 @login_required
 def delete(request, product_id):
+    """View delete, remove user's favorites."""
     product = Product.objects.get(id=product_id)
     favorite = Favorites.objects.filter(
         Product_id=product_id, CustomUser_id=request.user.id
@@ -67,6 +71,7 @@ def delete(request, product_id):
 
 @login_required
 def favorites(request, product_id):
+    """View favorites, add a user favorite."""
     product = Product.objects.get(id=product_id)
     favorite = Favorites.objects.get_or_create(
         Product_id=product_id, CustomUser_id=request.user.id
@@ -84,6 +89,7 @@ def favorites(request, product_id):
 
 
 def home(request):
+    """View home."""
     context = {
         "CATEGORIES": CATEGORIES,
     }
@@ -91,33 +97,40 @@ def home(request):
 
 
 def legal(request):
+    """View legal."""
     return render(request, "webapp/legal.html")
 
 
 @login_required
 def myfavorites(request):
-    favorites = get_list_or_404(Favorites)
-    results = []
-    for favorite in favorites:
-        results.append(get_object_or_404(Product, id=favorite.Product_id))
-    # Number of products by pages
-    paginator = Paginator(results, 6)
-    # Get current page number
-    page = request.GET.get("page")
+    """View myfavorites."""
     try:
-        products = paginator.page(page)
-    except PageNotAnInteger:
-        products = paginator.page(1)
-    except EmptyPage:
-        products = paginator.page(paginator.num_pages)
+        favorites = get_list_or_404(Favorites)
+        results = []
+        for favorite in favorites:
+            results.append(get_object_or_404(Product, id=favorite.Product_id))
+        # Number of products by pages
+        paginator = Paginator(results, 6)
+        # Get current page number
+        page = request.GET.get("page")
+        try:
+            products = paginator.page(page)
+        except PageNotAnInteger:
+            products = paginator.page(1)
+        except EmptyPage:
+            products = paginator.page(paginator.num_pages)
 
-    context = {
-        "products": products,
-    }
-    return render(request, "webapp/myfavorites.html", context)
+        context = {
+            "products": products,
+        }
+        return render(request, "webapp/myfavorites.html", context)
+    except:
+        messages.info(request, "Vous n'avez aucun produit sauvegardé.")
+    return render(request, "webapp/myfavorites.html")
 
 
 def product(request):
+    """View product."""
     product_id = request.GET["query"]
     product = Product.objects.get(id=product_id)
     context = {
@@ -127,6 +140,7 @@ def product(request):
 
 
 def results(request):
+    """View results."""
     # Get user input
     query = request.GET["query"]
     # Retrive information from database
@@ -157,6 +171,7 @@ def results(request):
 
 
 def search(request):
+    """View search."""
     # Get user input
     query = request.GET["query"]
     query_cleaned = Cleaner(query).query_cleaned

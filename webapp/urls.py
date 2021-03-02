@@ -1,3 +1,5 @@
+"""urls for webapp app."""
+
 from django.urls import path
 
 from . import views
