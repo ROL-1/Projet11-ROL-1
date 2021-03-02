@@ -1,7 +1,7 @@
 # Projet 8 du Parcours de développeur d'applications d'Openclassrooms.
 
 <div style="text-align: center">
-    <img src="https://github.com/ROL-1/P8-Nutella/tree/master/webapp/static/webapp/assets/img/readme-img.png"><br>
+    <img src="docs/readme-img.png" style="text-align: center"><br>
 </div>
 https://openclassrooms.com/fr/paths/68/projects/159/assignment
 
