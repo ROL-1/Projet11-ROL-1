@@ -1,7 +1,7 @@
 # Projet 8 du Parcours de développeur d'applications d'Openclassrooms.
 
 <div style="text-align: center">
-    <img src="docs/readme-img.png" style="text-align: center"><br>
+    <img src="docs/readmeimg.png" style="text-align: center"><br>
 </div>
 https://openclassrooms.com/fr/paths/68/projects/159/assignment
 
