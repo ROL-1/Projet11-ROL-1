@@ -1,16 +1,15 @@
-# Project 8, Openclassrooms : Application Developer - Python.
-
+# Project 8, Openclassrooms : Développeur d'application - Python.
 <div style="text-align: center">
     <img src="docs/readmeimg.png" style="text-align: center"><br>
 </div>
 https://openclassrooms.com/fr/paths/68/projects/159/assignment
 
 ## Utilisation
-A l'aide du champ recherche : vous pouvez chercher un produit dans la base de données.
-Uniquement quelques catégories sont disponibles dans cette version (cf page d'acceuil).
-Une liste de produits pouvant correspondre avec votre recherche sera proposée.
-En choisissant un produit une liste de produits pouvant le substituer, car ayant un meilleur nutriscore, vous sera proposée.
-Vous pouvez également créer un compte pour sauvegarder vos produits favoris.
+A l'aide du champ recherche : vous pouvez chercher un produit dans la base de données.  
+Uniquement quelques catégories sont disponibles dans cette version (cf page d'acceuil).  
+Une liste de produits pouvant correspondre avec votre recherche sera proposée.  
+En choisissant un produit une liste de produits pouvant le substituer, car ayant un meilleur nutriscore, vous sera proposée.  
+Vous pouvez également créer un compte pour sauvegarder vos produits favoris.  
 
 ## Lien direct vers l'application hébergée sur Heroku
 https://lepurbeurre.herokuapp.com/
@@ -22,12 +21,12 @@ https://lepurbeurre.herokuapp.com/
     * `pipenv shell`
     * `pipenv install -r requirements.txt`
 
-- Installer et peupler la base de données :
+- Installer et peupler la base de données :  
     ATTENTION : a chaque lancement de cette commande, les données sont effacées.
-    * py manage.py database
+    * `py manage.py database`
 
 - Lancement :
-    * py manage.py runserver
+    * `py manage.py runserver`
 
 Le site sera accessible par défaut à l'adresse : 
 http://127.0.0.1:8000/
@@ -49,7 +48,7 @@ Puis passer la commande :
     * OpenFoodfacts
     https://fr.openfoodfacts.org/
 
-## OpenClassrooms Project
+## Projet Openclassrooms
 
 ### Contexte
 La startup Pur Beurre, avec laquelle vous avez déjà travaillé, souhaite développer une plateforme web à destination de ses clients. Ce site permettra à quiconque de trouver un substitut sain à un aliment considéré comme "Trop gras, trop sucré, trop salé".

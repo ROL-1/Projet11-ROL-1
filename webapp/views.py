@@ -126,7 +126,7 @@ def myfavorites(request):
         return render(request, "webapp/myfavorites.html", context)
     except:
         messages.info(request, "Vous n'avez aucun produit sauvegardé.")
-        return render(request, "webapp/myfavorites.html")
+    return render(request, "webapp/myfavorites.html")
 
 
 def product(request):
