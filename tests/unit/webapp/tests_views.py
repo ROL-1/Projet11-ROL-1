@@ -185,6 +185,7 @@ class TestWiews(TestCase):
             render_to_string("webapp/results.html")
         with self.assertTemplateUsed("webapp/portfoliobox.html"):
             render_to_string("webapp/results.html")
+        self.assertTrue(len(response.context["products"]) == 1)
 
     def test_if_view_search_return_200_and_use_suitables_templates(self):
         """
@@ -199,4 +200,5 @@ class TestWiews(TestCase):
             render_to_string("webapp/search.html")
         with self.assertTemplateUsed("webapp/portfoliobox.html"):
             render_to_string("webapp/search.html")
+        self.assertTrue(len(response.context["products"]) > 1)
 

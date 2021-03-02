@@ -1,4 +1,5 @@
 # Projet 8 du Parcours de développeur d'applications d'Openclassrooms.
+![alt text](https://github.com/ROL-1/P8-Nutella/tree/master/webapp/static/webapp/assets/img/readme-img.jpg?raw=true)
 
 https://openclassrooms.com/fr/paths/68/projects/159/assignment
 
@@ -9,7 +10,8 @@ La startup Pur Beurre, avec laquelle vous avez déjà travaillé, souhaite déve
 
 ## Cahier des charges
 
-Le cahier des charges est disponible en cliquant sur ce lien.
+Le cahier des charges est disponible en cliquant sur ce lien : 
+https://company-82435.frontify.com/d/6Yy9WFJdtp8j/pur-beurre-style-guide#/introduction/Notre-identit%C3%A9
 
 ## Fonctionnalités
 

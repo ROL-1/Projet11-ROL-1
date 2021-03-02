@@ -1249,3 +1249,51 @@ JavaScript error: https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jqu
 
 ###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
 
+1614681139751	geckodriver	INFO	Listening on 127.0.0.1:52900
+1614681142782	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Kynes\\AppData\\Local\\Temp\\rust_mozprofilels4yIK"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1614681144480	Marionette	INFO	Listening on port 52914
+1614681144849	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js, line 2: ReferenceError: jQuery is not defined
+JavaScript error: https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js, line 1: TypeError: $.easing is undefined
+JavaScript error: https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js, line 2: ReferenceError: jQuery is not defined
+JavaScript error: https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js, line 1: TypeError: $.easing is undefined
+JavaScript error: https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js, line 2: ReferenceError: jQuery is not defined
+JavaScript error: https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js, line 1: TypeError: $.easing is undefined
+JavaScript error: https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js, line 2: ReferenceError: jQuery is not defined
+JavaScript error: https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js, line 1: TypeError: $.easing is undefined
+1614681147387	Marionette	INFO	Stopped listening on port 52914
+1614681848599	geckodriver	INFO	Listening on 127.0.0.1:54555
+1614681851615	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Kynes\\AppData\\Local\\Temp\\rust_mozprofilemPHVHh"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1614681853363	Marionette	INFO	Listening on port 54569
+1614681853654	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js, line 2: ReferenceError: jQuery is not defined
+JavaScript error: https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js, line 1: TypeError: $.easing is undefined
+JavaScript error: https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js, line 2: ReferenceError: jQuery is not defined
+JavaScript error: https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js, line 1: TypeError: $.easing is undefined
+JavaScript error: https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js, line 2: ReferenceError: jQuery is not defined
+JavaScript error: https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js, line 1: TypeError: $.easing is undefined
+JavaScript error: https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js, line 2: ReferenceError: jQuery is not defined
+JavaScript error: https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js, line 1: TypeError: $.easing is undefined
+1614681856210	Marionette	INFO	Stopped listening on port 54569
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1614681891497	geckodriver	INFO	Listening on 127.0.0.1:54790
+1614681894529	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Kynes\\AppData\\Local\\Temp\\rust_mozprofile5QOQMb"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1614681896279	Marionette	INFO	Listening on port 54804
+1614681896566	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js, line 2: ReferenceError: jQuery is not defined
+JavaScript error: https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js, line 1: TypeError: $.easing is undefined
+JavaScript error: https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js, line 2: ReferenceError: jQuery is not defined
+JavaScript error: https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js, line 1: TypeError: $.easing is undefined
+JavaScript error: https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js, line 2: ReferenceError: jQuery is not defined
+JavaScript error: https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js, line 1: TypeError: $.easing is undefined
+JavaScript error: https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js, line 2: ReferenceError: jQuery is not defined
+JavaScript error: https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js, line 1: TypeError: $.easing is undefined
+1614681899156	Marionette	INFO	Stopped listening on port 54804
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
