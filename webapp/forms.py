@@ -8,7 +8,7 @@ from product.models import Product
 
 
 class ProductForm(forms.ModelForm):
-    """Define form form django."""
+    """Define Product form from django."""
 
     class Meta:
         """Meta options."""
