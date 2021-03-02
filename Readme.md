@@ -1,6 +1,8 @@
 # Projet 8 du Parcours de développeur d'applications d'Openclassrooms.
-![Readme image](https://github.com/ROL-1/P8-Nutella/tree/master/webapp/static/webapp/assets/img/readme-img.png?raw=true)
 
+<div style="text-align: center">
+    <img src="https://github.com/ROL-1/P8-Nutella/tree/master/webapp/static/webapp/assets/img/readme-img.png"><br>
+</div>
 https://openclassrooms.com/fr/paths/68/projects/159/assignment
 
 ## Trello
