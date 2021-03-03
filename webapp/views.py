@@ -39,7 +39,7 @@ class ProductAutocomplete(autocomplete.Select2QuerySetView):
         #     return Product.objects.none()
 
         if self.q:
-            qs = Product.objects.all()
+            qs = Product.objects.all().order_by("id")
             qs = qs.filter(product_name_fr__icontains=self.q)
         else:
             qs = Product.objects.none()
@@ -72,7 +72,6 @@ def delete(request, product_id):
 @login_required
 def favorites(request, product_id):
     """View favorites, add a user favorite."""
-    print(request.POST)
     product = Product.objects.get(id=product_id)
     favorite = Favorites.objects.get_or_create(
         Product_id=product_id, CustomUser_id=request.user.id
@@ -128,9 +127,8 @@ def myfavorites(request):
     return render(request, "webapp/myfavorites.html")
 
 
-def product(request):
+def product(request, product_id):
     """View product."""
-    product_id = request.GET["query"]
     product = Product.objects.get(id=product_id)
     context = {
         "product": product,

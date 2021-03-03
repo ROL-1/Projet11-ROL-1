@@ -21,9 +21,10 @@ https://lepurbeurre.herokuapp.com/
     * `pipenv shell`
     * `pipenv install -r requirements.txt`
 
-- Installer et peupler la base de données :  
+- Installer et peupler la base de données :
+    * Créer une base de données, renseigner ses informations de connection dans purbeurre\settings.py  
     ATTENTION : a chaque lancement de cette commande, les données sont effacées.
-    * `py manage.py database`
+    * `py manage.py database` (aucun doublon de nom de produit n'est accepté).
 
 - Lancement :
     * `py manage.py runserver`

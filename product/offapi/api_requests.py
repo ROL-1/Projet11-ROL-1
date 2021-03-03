@@ -97,7 +97,6 @@ class ApiRequests:
     def products_nb(self, cleaned_scraped, category):
         """Check how many products by categories are suitables."""
         products_nb = 0
-        print("len(cleaned_scraped)", len(cleaned_scraped))
         for product in cleaned_scraped:
             if category == product["categories"]:
                 products_nb += 1
@@ -111,6 +110,7 @@ class ApiRequests:
     def api_get_data(self, Fields_charmax):
         # TC def api_get_data(self):
         """Review categories until there is 'MIN_PROD' products for each."""
+        print("Loading datas from api.")
         for category in CATEGORIES:
             cat_filled = False
             # Loop while there is not enough products for the category.

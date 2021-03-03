@@ -9,11 +9,11 @@
                     src="{% static 'webapp/assets/img/page/OFF_not_found.png' %}" alt="not found image"></object>
             {% url 'search' as my_view %}
             {% if request.path == my_view %}
-            <a class="portfolio-box-caption" href="{% url 'results' query=product.id %}">
+            <a class="portfolio-box-caption" href="{% url 'results' %}?query={{ product.id }}">
                 <div class="project-name">Cliquez ici pour sélectionner ce produit.</div>
             </a>
             {% else %}
-            <a class="portfolio-box-caption" href="{% url 'product' query=product.id %}">
+            <a class="portfolio-box-caption" href="{% url 'product' product.id %}">
                 <div class="project-name">Cliquez ici pour voir la fiche produit.</div>
             </a>
             {% endif %}
