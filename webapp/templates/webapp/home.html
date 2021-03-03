@@ -15,16 +15,21 @@
             </div>
             <div class="col-lg-8 align-self-baseline">
                 <h2 class="text-uppercase font-weight-bold masthead__text">Trouvez un produit de substitution pour ceux
-                    que vous consommez tous les jours.</h2>
-                <form action="{% url 'search' %}" method="get" accept-charset="utf-8">
-                    {% csrf_token %}
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Produit" name="query" required>
-                        <div class="input-group-append">
-                            <button class="btn btn-primary btn-block" type="button">Chercher</button>
+                    que vous consommez tous les jours.
+                </h2><br />
+
+                <div class="row align-items-center justify-content-center">
+                    <form action="{% url 'results' %}" method="get" accept-charset="utf-8">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            {{ form2 }}
+                            <div class="input-group-append">
+                                <input class="btn btn-primary btn-sm" type="submit"></input>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
+
                 {% if messages %}
                 <ul class="messages">
                     {% for message in messages %}

@@ -101,22 +101,20 @@ class TestWiews(TestCase):
     #     """
     #     Check if "response.status_code" is "302".
     #     """
-    # form method="post" action="{% url 'delete' product_id=product.id %}
-    #     response = self.client.get(reverse("delete"))
+    # # form method="post" action="{% url 'delete' product_id=product.id %}
+    #     response = self.client.post(reverse("delete"))
     #     self.assertEqual(response.status_code, 302)
     #     # no templates used (redirect to "myfavorites.html")
 
-    # def test_if_view_favorites_return_302(self):
-    #     """
-    #     Check if "response.status_code" is "302".
-    #     """
+    def test_if_view_favorites_return_302(self):
+        """
+        Check if "response.status_code" is "302".
+        """
 
-    #     # form method="post" action="{% url 'favorites' product_id=product.id %}">
-    #     response = self.client.get(
-    #         reverse("favorites", {"product_id": self.product.id})
-    #     )
-    #     self.assertEqual(response.status_code, 302)
-    #     # no templates used (redirect to "myfavorites")
+        # form method="post" action="{% url 'favorites' product_id=product.id %}">
+        response = self.client.post(reverse("favorites"))
+        self.assertEqual(response.status_code, 302)
+        # no templates used (redirect to "myfavorites")
 
     def test_if_view_home_return_200_and_use_suitables_templates(self):
         """

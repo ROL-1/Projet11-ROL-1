@@ -14,5 +14,5 @@ class CustomUser(AbstractUser):
 class Favorites(models.Model):
     """Favorites model from django."""
 
-    Product = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
-    CustomUser = models.ForeignKey(CustomUser, on_delete=models.DO_NOTHING)
+    Product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    CustomUser = models.ForeignKey(CustomUser, on_delete=models.CASCADE)

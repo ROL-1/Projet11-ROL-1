@@ -72,6 +72,7 @@ def delete(request, product_id):
 @login_required
 def favorites(request, product_id):
     """View favorites, add a user favorite."""
+    print(request.POST)
     product = Product.objects.get(id=product_id)
     favorite = Favorites.objects.get_or_create(
         Product_id=product_id, CustomUser_id=request.user.id
@@ -90,9 +91,7 @@ def favorites(request, product_id):
 
 def home(request):
     """View home."""
-    context = {
-        "CATEGORIES": CATEGORIES,
-    }
+    context = {"CATEGORIES": CATEGORIES, "form2": ProductForm}
     return render(request, "webapp/home.html", context)
 
 

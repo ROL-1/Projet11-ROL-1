@@ -15,7 +15,7 @@ FIELDS = "generic_name_fr,product_name_fr,sugars_100g,salt_100g,\
 saturated-fat_100g,fat_100g,nutriscore_grade,brands,code,categories,url,image_url"
 
 # Add, delete or change categories.
-CATEGORIES = ["Pizzas", "Sodas", "Chocolats", "Brioches"]
+CATEGORIES = ["Pizzas", "Sodas", "Chocolats", "Brioches", "Pains"]
 
 # Minimum number of products by categories.
-MIN_PROD = 100
+MIN_PROD = 1000

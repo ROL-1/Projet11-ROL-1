@@ -94,47 +94,6 @@ class FirefoxFunctionalTestCases(LiveServerTestCase):
         super().tearDownClass()
         cls.driver.quit()
 
-    # @classmethod
-    # def setUpTestData(cls):
-    #     """Create test datas."""
-    #     # User
-    #     name = "user1"
-    #     email = "user1@email.com"
-    #     psswd = "psswd123"
-    #     user = CustomUser.objects.create(
-    #         username=name, email=email, password=psswd
-    #     )
-    #     # Log user
-    #     c = Client()
-    #     c.login(username=name, password=psswd)
-    #     # Query
-    #     cls.query = "product_name_fr"
-    #     # Product
-    #     code = CodesProductsOff.objects.create(code=0)
-    #     brand = Brands.objects.create(brand="test_brand")
-    #     nutriscore_grade = NutriscoreGrades.objects.create(
-    #         nutriscore_grade="c"
-    #     )
-    #     category = Categories.objects.create(category="test_category")
-    #     cls.product = Product.objects.create(
-    #         product_name_fr="test_product_name_fr",
-    #         generic_name_fr="test_generic_name_fr",
-    #         fat_100g=1.1,
-    #         saturated_fat_100g=2.2,
-    #         salt_100g=3.3,
-    #         sugars_100g=4.4,
-    #         url="test_url.com2",
-    #         image_url="test_url.com2",
-    #         CodesProductsOff=code,
-    #         Brands=brand,
-    #         NutriscoreGrades=nutriscore_grade,
-    #         Categories=category,
-    #     )
-    #     # Favorite for User
-    #     favorite = Favorites.objects.create(
-    #         Product_id=cls.product.id, CustomUser_id=user.id
-    #     )
-
     def setUp(self):
         User = get_user_model()
         self.user = User.objects.create_user(
