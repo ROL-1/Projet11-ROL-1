@@ -144,26 +144,39 @@ def results(request):
     product = Product.objects.get(id=query)
     category_id = product.Categories_id
     nutriscore_id = product.NutriscoreGrades_id
-    results = get_list_or_404(
-        Product, Categories=category_id, NutriscoreGrades_id__lt=nutriscore_id
-    )
-    # Number of products by pages
-    paginator = Paginator(results, 6)
-    # Get current page number
-    page = request.GET.get("page")
     try:
-        products = paginator.page(page)
-    except PageNotAnInteger:
-        products = paginator.page(1)
-    except EmptyPage:
-        products = paginator.page(paginator.num_pages)
+        results = get_list_or_404(
+            Product,
+            Categories=category_id,
+            NutriscoreGrades_id__lt=nutriscore_id,
+        )
+        # Number of products by pages
+        paginator = Paginator(results, 6)
+        # Get current page number
+        page = request.GET.get("page")
+        try:
+            products = paginator.page(page)
+        except PageNotAnInteger:
+            products = paginator.page(1)
+        except EmptyPage:
+            products = paginator.page(paginator.num_pages)
 
-    context = {
-        "products": products,
-        "product_id": query,
-        "product": product,
-        "query": query,
-    }
+        context = {
+            "products": products,
+            "product_id": query,
+            "product": product,
+            "query": query,
+        }
+    except:
+        messages.add_message(
+            request,
+            messages.INFO,
+            "Nous n'avons aucun substitut à vous proposer pour ce produit.",
+        )
+        context = {
+            "product": product,
+        }
+        return render(request, "webapp/product.html", context)
     return render(request, "webapp/results.html", context)
 
 
@@ -203,7 +216,7 @@ def search(request):
         context = {"products": products, "query": query}
     except:
         messages.add_message(
-            request, messages.ERROR, "Aucun produit correspondant trouvé."
+            request, messages.INFO, "Aucun produit correspondant trouvé."
         )
         return redirect("home")
     return render(request, "webapp/search.html", context)

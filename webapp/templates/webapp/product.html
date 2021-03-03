@@ -17,6 +17,15 @@
 <!-- Results -->
 <section class="page-section main-section bg-primary">
     <div class="container">
+        <div class="text-center">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
         <div class="row justify-content-center text-center">
             <div class="text-center col-lg-4">
                 <h2 class=" text-grey mt-0">Nutriscore :</h2>
