@@ -24,12 +24,12 @@ class TestWiews(TestCase):
         name = "user1"
         email = "user1@email.com"
         psswd = "psswd123"
-        user = CustomUser.objects.create(
+        cls.user = CustomUser.objects.create(
             username=name, email=email, password=psswd
         )
         # Log user
-        c = Client()
-        c.login(username=name, password=psswd)
+        cls.c = Client()
+        # c.login(username=name, password=psswd)
         # Query
         cls.query = "product_name_fr"
         # Product
@@ -75,7 +75,7 @@ class TestWiews(TestCase):
         )
         # Favorite for User
         favorite = Favorites.objects.create(
-            Product_id=cls.product.id, CustomUser_id=user.id
+            Product_id=cls.product.id, CustomUser_id=cls.user.id
         )
 
     def test_if_view_admin_return_302(self):
@@ -97,22 +97,30 @@ class TestWiews(TestCase):
         with self.assertTemplateUsed("webapp/base.html"):
             render_to_string("webapp/contact.html")
 
-    # def test_if_view_delete_return_302(self):
+    def test_if_view_delete_return_302(self):
+        """
+        Check if "response.status_code" is "302".
+        """
+        response = self.client.post(reverse("delete", args=[self.product.id]))
+        self.assertEqual(response.status_code, 302)
+        # no templates used (redirect to "myfavorites.html")
+
+    # def test_if_view_delete_return_200_with_user_logged(self):
     #     """
-    #     Check if "response.status_code" is "302".
+    #     Check if "response.status_code" is "200" with user logged.
     #     """
-    # # form method="post" action="{% url 'delete' product_id=product.id %}
-    #     response = self.client.post(reverse("delete"))
-    #     self.assertEqual(response.status_code, 302)
+    #     self.c.force_login(self.user)
+    #     response = self.client.post(reverse("delete", args=[self.product.id]))
+    #     self.assertEqual(response.status_code, 200)
     #     # no templates used (redirect to "myfavorites.html")
 
     def test_if_view_favorites_return_302(self):
         """
         Check if "response.status_code" is "302".
         """
-
-        # form method="post" action="{% url 'favorites' product_id=product.id %}">
-        response = self.client.post(reverse("favorites"))
+        response = self.client.post(
+            reverse("favorites", args=[self.product.id])
+        )
         self.assertEqual(response.status_code, 302)
         # no templates used (redirect to "myfavorites")
 
@@ -159,9 +167,7 @@ class TestWiews(TestCase):
         1. Check if "response.status_code" is "200".
         2. Check if suitables templates are used.
         """
-        response = self.client.get(
-            reverse("product"), {"query": self.product.id}
-        )
+        response = self.client.get(reverse("product", args=[self.product.id]))
         self.assertEqual(response.status_code, 200)
         with self.assertTemplateUsed("webapp/product.html"):
             render_to_string("webapp/product.html", {"product": self.product,})
@@ -178,11 +184,11 @@ class TestWiews(TestCase):
         )
         self.assertEqual(response.status_code, 200)
         with self.assertTemplateUsed("webapp/results.html"):
-            render_to_string("webapp/results.html")
+            render_to_string("webapp/results.html", {"product": self.product,})
         with self.assertTemplateUsed("webapp/base.html"):
-            render_to_string("webapp/results.html")
+            render_to_string("webapp/results.html", {"product": self.product,})
         with self.assertTemplateUsed("webapp/portfoliobox.html"):
-            render_to_string("webapp/results.html")
+            render_to_string("webapp/results.html", {"product": self.product,})
         self.assertTrue(len(response.context["products"]) == 1)
 
     def test_if_view_search_return_200_and_use_suitables_templates(self):

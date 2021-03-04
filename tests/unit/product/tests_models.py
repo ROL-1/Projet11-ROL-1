@@ -11,6 +11,7 @@ from product.models import (
 )
 
 
+
 class ProductModelTest(TestCase):
     """Tests for database models."""
 

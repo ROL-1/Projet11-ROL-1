@@ -16,10 +16,13 @@ class ProductForm(forms.ModelForm):
         widget=autocomplete.ModelSelect2(
             url="product-autocomplete",
             attrs={
+                "data-allowClear": "true",
+                "data-containerCssClass": "custom-select-lg",
                 # Set some placeholder
                 "data-placeholder": "Produit à substituer",
                 # Only trigger autocompletion after 1 character has been typed
                 "data-minimum-input-length": 1,
+                "data-language--input-too-short": "",
             },
         ),
     )

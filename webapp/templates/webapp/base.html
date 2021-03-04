@@ -40,17 +40,9 @@
                 <ul class="navbar-nav ml-auto my-2 my-lg-0">
                     <form id="search-nav" action="{% url 'search' %}" method="get">
                         {% csrf_token %}
-                        <!-- {{ form.as_p }} -->
-                        <input type="text" class="form-control search-nav" placeholder="Produit" name="query" required>
+                        <input id="search-nav-input" type="text" class="form-control search-nav" placeholder="Produit"
+                            name="query" required>
                     </form>
-                    <script>
-                        document.addEventListener('dal-init-function', function () {
-                            yl.registerFunction('your_autocomplete_function', function ($, element) {
-                                var $element = $(element);
-                                // autocomplete function here
-                            });
-                        })
-                    </script>
                     {% if user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'myaccount' %}">
                             <i class="fas fa-user fa-3x"></i>

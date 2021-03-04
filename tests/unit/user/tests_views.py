@@ -13,18 +13,6 @@ from user.models import CustomUser
 class TestWiews(TestCase):
     """Test views and associated templates."""
 
-    @classmethod
-    def setUpTestData(cls):
-        """Create test datas."""
-        # User
-        name = "user1"
-        email = "user1@email.com"
-        psswd = "psswd123"
-        CustomUser.objects.create(username=name, email=email, password=psswd)
-        # Log user
-        c = Client()
-        c.login(username=name, password=psswd)
-
     def test_if_view_myaccount_return_302_and_use_suitables_templates(self):
         """Test myaccount view.
 

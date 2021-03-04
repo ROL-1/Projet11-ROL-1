@@ -37,6 +37,13 @@ Il est nécessaire d'avoir un compte heroku et d'y définir ce projet comme nouv
 Puis passer la commande :
 - `git push heroku`
 
+Commande personnalisée pour initialiser la base de données sur heroku :
+
+- `heroku run python manage.py migrate`
+- `run heroku run bash -a <nom_projet_heroku>`
+Depuis le dossier contenant manage.py:
+- `Run python manage.py database`
+
 ## Logiciels, librairies, APIs
 - Python 3.8
 - Django 3.1

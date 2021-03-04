@@ -1,0 +1,20 @@
+.pager {
+  text-align: center;
+  list-style: none;
+  margin-left: -30px;
+}
+
+.pagerbtn {
+  width: 150px !important;
+}
+
+.masthead__text {
+  font-size: 2em !important;
+}
+
+@media (min-width: 576px) {
+  #autobtn {
+    margin-top: 0;
+  }
+}
+/*# sourceMappingURL=styles_results.css.map */

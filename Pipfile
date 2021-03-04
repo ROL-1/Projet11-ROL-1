@@ -4,6 +4,7 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pytest = "*"
 
 [packages]
 django = "*"
@@ -20,6 +21,7 @@ unidecode = "*"
 coverage = "*"
 flake8 = "*"
 selenium = "*"
+pytest = "*"
 
 [requires]
 python_version = "3.8"

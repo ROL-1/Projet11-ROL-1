@@ -35,9 +35,6 @@ from .forms import ProductForm
 
 class ProductAutocomplete(autocomplete.Select2QuerySetView):
     def get_queryset(self):
-        # if not self.request.user.is_authenticated():
-        #     return Product.objects.none()
-
         if self.q:
             qs = Product.objects.all().order_by("id")
             qs = qs.filter(product_name_fr__icontains=self.q)
@@ -45,10 +42,6 @@ class ProductAutocomplete(autocomplete.Select2QuerySetView):
             qs = Product.objects.none()
 
         return qs
-
-
-# DANGER !!! As you might have noticed, we have just exposed data through a public URL.
-# Please don’t forget to do proper permission checks in get_queryset. !!!
 
 
 def contact(request):

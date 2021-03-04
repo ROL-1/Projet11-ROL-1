@@ -143,7 +143,7 @@ class ApiRequests:
                 else:
                     self.page_nb = 1
 
-        # Write JSON of datas (for debug)
+        # # Write JSON of datas (for debug)
         # with open("cleaned_scraped.json", "w") as write_file:
         #     json.dump(self.cleaned_scraped, write_file, indent=4)
 

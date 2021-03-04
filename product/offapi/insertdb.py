@@ -68,5 +68,4 @@ def insertdb(Api_data):
             count += 1
             print("IntegrityError count :", count, exception.args[0])
             pass
-    print("Inserted products count :", product_count)
 
