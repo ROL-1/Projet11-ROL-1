@@ -24,12 +24,9 @@ class TestWiews(TestCase):
         name = "user1"
         email = "user1@email.com"
         psswd = "psswd123"
-        cls.user = CustomUser.objects.create(
+        user = CustomUser.objects.create(
             username=name, email=email, password=psswd
         )
-        # Log user
-        cls.c = Client()
-        # c.login(username=name, password=psswd)
         # Query
         cls.query = "product_name_fr"
         # Product
@@ -75,7 +72,7 @@ class TestWiews(TestCase):
         )
         # Favorite for User
         favorite = Favorites.objects.create(
-            Product_id=cls.product.id, CustomUser_id=cls.user.id
+            Product_id=cls.product.id, CustomUser_id=user.id
         )
 
     def test_if_view_admin_return_302(self):
@@ -105,14 +102,14 @@ class TestWiews(TestCase):
         self.assertEqual(response.status_code, 302)
         # no templates used (redirect to "myfavorites.html")
 
-    # def test_if_view_delete_return_200_with_user_logged(self):
-    #     """
-    #     Check if "response.status_code" is "200" with user logged.
-    #     """
-    #     self.c.force_login(self.user)
-    #     response = self.client.post(reverse("delete", args=[self.product.id]))
-    #     self.assertEqual(response.status_code, 200)
-    #     # no templates used (redirect to "myfavorites.html")
+    def test_if_view_delete_return_200_with_user_logged(self):
+        """
+        Check if "response.status_code" is "200" with user logged.
+        """
+        self.client.force_login(CustomUser.objects.get_or_create("user1")[0])
+        response = self.client.post(reverse("delete", args=[self.product.id]))
+        self.assertEqual(response.status_code, 200)
+        # no templates used (redirect to "myfavorites.html")
 
     def test_if_view_favorites_return_302(self):
         """
@@ -123,6 +120,17 @@ class TestWiews(TestCase):
         )
         self.assertEqual(response.status_code, 302)
         # no templates used (redirect to "myfavorites")
+
+    # def test_if_view_favorites_return_200_when_user_is_logged(self):
+    #     """
+    #     Check if "response.status_code" is "200".
+    #     """
+    #     self.client.force_login(CustomUser.objects.get_or_create("user1")[0])
+    #     response = self.client.post(
+    #         reverse("favorites", args=[self.product.id])
+    #     )
+    #     self.assertEqual(response.status_code, 200)
+    #     # no templates used (redirect to "myfavorites")
 
     def test_if_view_home_return_200_and_use_suitables_templates(self):
         """
@@ -161,6 +169,14 @@ class TestWiews(TestCase):
             render_to_string("webapp/myfavorites.html")
         with self.assertTemplateUsed("webapp/portfoliobox.html"):
             render_to_string("webapp/myfavorites.html")
+
+    def test_if_view_myfavorites_return_200_with_user_logged(self):
+        """
+        Check if myfavorites "response.status_code" is "200" with user logged.
+        """
+        self.client.force_login(CustomUser.objects.get_or_create("user1")[0])
+        response = self.client.get(reverse("myfavorites"))
+        self.assertEqual(response.status_code, 200)
 
     def test_if_view_product_return_200_and_use_suitables_templates(self):
         """
