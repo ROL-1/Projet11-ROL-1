@@ -3,4 +3,5 @@ __pycache__/
 .coverage
 coverage_html/
 staticfiles/
-.log
+dumps/
+geckodriver.log

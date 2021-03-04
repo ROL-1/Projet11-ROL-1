@@ -11,32 +11,37 @@ from product.models import (
 )
 
 
-
 class ProductModelTest(TestCase):
     """Tests for database models."""
 
     @classmethod
     def setUpTestData(cls):
-        """Create fake datas once for all tests and define 'product'."""
-        CodesProductsOff.objects.create(code="8000070200289"),
-        Brands.objects.create(brand="brandtest"),
-        NutriscoreGrades.objects.create(nutriscore_grade="a"),
-        Categories.objects.create(category="categorytest"),
-        Product.objects.create(
-            CodesProductsOff_id="1",
-            Brands_id="1",
-            NutriscoreGrades_id="1",
-            Categories_id="1",
-            product_name_fr="product name test",
-            generic_name_fr="generic name test",
-            fat_100g="1",
-            saturated_fat_100g="2",
-            salt_100g="3",
-            sugars_100g="4",
-            url="url@test.com",
-            image_url="urlimage@test.com",
+        """Create test datas."""
+        # Product
+        code = CodesProductsOff.objects.create(code=0)
+        brand = Brands.objects.create(brand="test_brand")
+        # create nutriscore grade for substitute (need lower id)
+        nutriscore_grade_sub = NutriscoreGrades.objects.create(
+            nutriscore_grade="a"
         )
-        cls.product = Product.objects.get(id=1)
+        nutriscore_grade = NutriscoreGrades.objects.create(
+            nutriscore_grade="c"
+        )
+        category = Categories.objects.create(category="test_category")
+        cls.product = Product.objects.create(
+            product_name_fr="test_product_name_fr",
+            generic_name_fr="test_generic_name_fr",
+            fat_100g=1.1,
+            saturated_fat_100g=2.2,
+            salt_100g=3.3,
+            sugars_100g=4.4,
+            url="test_url.com2",
+            image_url="test_url.com2",
+            CodesProductsOff=code,
+            Brands=brand,
+            NutriscoreGrades=nutriscore_grade,
+            Categories=category,
+        )
 
     def test_product_labels(self):
         """Test labels."""
@@ -115,7 +120,7 @@ class ProductModelTest(TestCase):
 
     def test_object_name_is_category(self):
         """Test category name."""
-        categories = Categories.objects.get(id=1)
+        categories = Categories.objects.get(category="test_category")
         expected_object_name = categories.category
         self.assertEquals(expected_object_name, str(categories))
 
