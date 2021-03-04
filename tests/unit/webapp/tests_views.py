@@ -108,7 +108,7 @@ class TestWiews(TestCase):
         """
         self.client.force_login(CustomUser.objects.get_or_create("user1")[0])
         response = self.client.post(reverse("delete", args=[self.product.id]))
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.url, "/webapp/myfavorites/")
         # no templates used (redirect to "myfavorites.html")
 
     def test_if_view_favorites_return_302(self):
@@ -121,16 +121,16 @@ class TestWiews(TestCase):
         self.assertEqual(response.status_code, 302)
         # no templates used (redirect to "myfavorites")
 
-    # def test_if_view_favorites_return_200_when_user_is_logged(self):
-    #     """
-    #     Check if "response.status_code" is "200".
-    #     """
-    #     self.client.force_login(CustomUser.objects.get_or_create("user1")[0])
-    #     response = self.client.post(
-    #         reverse("favorites", args=[self.product.id])
-    #     )
-    #     self.assertEqual(response.status_code, 200)
-    #     # no templates used (redirect to "myfavorites")
+    def test_if_view_favorites_return_200_when_user_is_logged(self):
+        """
+        Check if "response.status_code" is "200".
+        """
+        self.client.force_login(CustomUser.objects.get_or_create("user1")[0])
+        response = self.client.post(
+            reverse("favorites", args=[self.product.id])
+        )
+        self.assertEqual(response.url, "/webapp/myfavorites/")
+        # no templates used (redirect to "myfavorites")
 
     def test_if_view_home_return_200_and_use_suitables_templates(self):
         """
@@ -206,6 +206,7 @@ class TestWiews(TestCase):
         with self.assertTemplateUsed("webapp/portfoliobox.html"):
             render_to_string("webapp/results.html", {"product": self.product,})
         self.assertTrue(len(response.context["products"]) == 1)
+        self.assertEqual(len(response.context), 3)
 
     def test_if_view_search_return_200_and_use_suitables_templates(self):
         """
