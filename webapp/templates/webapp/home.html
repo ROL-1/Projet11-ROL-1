@@ -21,18 +21,20 @@
                     <form action="{% url 'results' %}" method="get" accept-charset="utf-8">
                         {% csrf_token %}
                         {{ form2 }}
-                        <input class="btn btn-primary btn-sm" type="submit" id="autobtn"></input>
+                        <input class="btn btn-primary btn-sm" type="submit" id="autobtn" value="Cherchez"></input>
                     </form>
                 </div>
             </div>
             <br />
-            {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-                    {% endfor %}
-            </ul>
-            {% endif %}
+            <div>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
             <h3 class="small font-weight-bold">Vous pouvez chercher un produit dans les catégories suivantes :
                 <br />
                 {{ CATEGORIES|join:", "}}.

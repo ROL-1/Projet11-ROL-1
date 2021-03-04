@@ -40,9 +40,9 @@ Puis passer la commande :
 Commande personnalisée pour initialiser la base de données sur heroku :
 
 - `heroku run python manage.py migrate`
-- `run heroku run bash -a <nom_projet_heroku>`
+- `heroku run bash -a <nom_projet_heroku>`
 Depuis le dossier contenant manage.py:
-- `Run python manage.py database`
+- `python manage.py database`
 
 ## Logiciels, librairies, APIs
 - Python 3.8
