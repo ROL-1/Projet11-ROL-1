@@ -17,7 +17,7 @@
                 <h2 class="text-uppercase font-weight-bold masthead__text">Trouvez un produit de substitution pour ceux
                     que vous consommez tous les jours.
                 </h2><br />
-                <div class="row justify-content-center" id="autodiv">
+                <div class="row justify-content-center">
                     <form action="{% url 'results' %}" method="get" accept-charset="utf-8">
                         {% csrf_token %}
                         {{ form2 }}
