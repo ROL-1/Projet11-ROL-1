@@ -64,7 +64,8 @@ class ApiRequests:
         """Check 2 : Empty string if there is a forbiden caracter."""
         for field, string in product.items():
             if isinstance(string, str):
-                if ("\n" or "\t" or "\r") in string:
+                match = bool(re.search("\s+", string))
+                if match:
                     product[field] = ""
 
     def data_missing(self, product):
