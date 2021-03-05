@@ -11,7 +11,7 @@ from django.shortcuts import (
     render,
 )
 
-from product.offapi.api_config import CATEGORIES
+from product.offapi.apiconfig import CATEGORIES
 from product.models import (
     Product,
     Categories,

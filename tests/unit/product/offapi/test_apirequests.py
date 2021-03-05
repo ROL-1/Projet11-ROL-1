@@ -1,6 +1,6 @@
-"""Tests file for api_requests.py. With Pytest."""
+"""Tests file for apirequests.py. With Pytest."""
 
-from product.offapi.api_requests import ApiRequests
+from product.offapi.apirequests import ApiRequests
 
 
 class TestApiRequests:

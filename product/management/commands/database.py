@@ -4,7 +4,7 @@
 
 from django.core.management.base import BaseCommand
 
-from product.offapi.api_requests import ApiRequests
+from product.offapi.apirequests import ApiRequests
 from product.offapi.insertdb import deletedata, insertdb
 from product.offapi.charmax import Charmax
 

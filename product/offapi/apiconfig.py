@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 # coding: utf-8
-"""config file for api_requests.py."""
+"""config file for apirequests.py."""
 
 REQUEST_PARAMS = [
     "action=process",

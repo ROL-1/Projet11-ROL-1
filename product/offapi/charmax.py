@@ -2,8 +2,6 @@
 # coding: utf-8
 """Class to retrives informations from database."""
 
-# from .api_config import FIELDS
-
 from product.models import (
     Product,
     Categories,

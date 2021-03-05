@@ -1,4 +1,4 @@
-"""Tests file for api_requests.py."""
+"""Tests file for charmax.py."""
 
 from django.test import TestCase
 

@@ -7,7 +7,7 @@ import json
 import requests
 
 
-from product.offapi.api_config import (
+from product.offapi.apiconfig import (
     CATEGORIES,
     FIELDS,
     MIN_PROD,
