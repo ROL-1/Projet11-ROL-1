@@ -34,7 +34,10 @@ from .forms import ProductForm
 
 
 class ProductAutocomplete(autocomplete.Select2QuerySetView):
+    """Autocomplete for Product table."""
+
     def get_queryset(self):
+        """Load product table for autocomplete."""
         if self.q:
             qs = Product.objects.all().order_by("id")
             qs = qs.filter(product_name_fr__icontains=self.q)

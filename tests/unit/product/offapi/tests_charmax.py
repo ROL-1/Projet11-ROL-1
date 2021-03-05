@@ -11,10 +11,7 @@ class TestCharmax(TestCase):
     def test_characters_max_return_dict_with_max_characters_values_for_fields(
         self,
     ):
-        """
-        When database is request by characters_max() function, it returns a dict with
-        maximums characters alloweds for a list fields.
-        """
+        """When database is request by characters_max() function, it returns a dict."""
         assert Charmax.characters_max() == {
             "generic_name_fr": 100,
             "product_name_fr": 100,

@@ -1,3 +1,5 @@
+"""Tests for views.py from webapp."""
+
 from django.test import TestCase, Client
 from django.urls import reverse
 from django.template.loader import render_to_string
@@ -76,15 +78,13 @@ class TestWiews(TestCase):
         )
 
     def test_if_view_admin_return_302(self):
-        """
-        1. Check if "response.status_code" is "302".
-        """
+        """Check if "response.status_code" is "302"."""
         response = self.client.get(reverse("admin:index"))
         self.assertEqual(response.status_code, 302)
 
     def test_if_view_contact_return_200_and_use_suitables_templates(self):
-        """
-        1. Check if "response.status_code" is "200".
+        """1. Check if "response.status_code" is "200".
+
         2. Check if suitables templates are used.
         """
         response = self.client.get(reverse("contact"))
@@ -95,26 +95,20 @@ class TestWiews(TestCase):
             render_to_string("webapp/contact.html")
 
     def test_if_view_delete_return_302(self):
-        """
-        Check if "response.status_code" is "302".
-        """
+        """Check if "response.status_code" is "302"."""
         response = self.client.post(reverse("delete", args=[self.product.id]))
         self.assertEqual(response.status_code, 302)
         # no templates used (redirect to "myfavorites.html")
 
     def test_if_view_delete_return_200_with_user_logged(self):
-        """
-        Check if "response.status_code" is "200" with user logged.
-        """
+        """Check if "response.status_code" is "200" with user logged."""
         self.client.force_login(CustomUser.objects.get_or_create("user1")[0])
         response = self.client.post(reverse("delete", args=[self.product.id]))
         self.assertEqual(response.url, "/webapp/myfavorites/")
         # no templates used (redirect to "myfavorites.html")
 
     def test_if_view_favorites_return_302(self):
-        """
-        Check if "response.status_code" is "302".
-        """
+        """Check if "response.status_code" is "302"."""
         response = self.client.post(
             reverse("favorites", args=[self.product.id])
         )
@@ -122,9 +116,7 @@ class TestWiews(TestCase):
         # no templates used (redirect to "myfavorites")
 
     def test_if_view_favorites_return_200_when_user_is_logged(self):
-        """
-        Check if "response.status_code" is "200".
-        """
+        """Check if "response.status_code" is "200"."""
         self.client.force_login(CustomUser.objects.get_or_create("user1")[0])
         response = self.client.post(
             reverse("favorites", args=[self.product.id])
@@ -133,8 +125,8 @@ class TestWiews(TestCase):
         # no templates used (redirect to "myfavorites")
 
     def test_if_view_home_return_200_and_use_suitables_templates(self):
-        """
-        1. Check if "response.status_code" is "200".
+        """1. Check if "response.status_code" is "200".
+
         2. Check if suitables templates are used.
         """
         response = self.client.get(reverse("home"))
@@ -145,8 +137,8 @@ class TestWiews(TestCase):
             render_to_string("webapp/home.html")
 
     def test_if_view_legal_return_200_and_use_suitables_templates(self):
-        """
-        1. Check if "response.status_code" is "200".
+        """1. Check if "response.status_code" is "200".
+
         2. Check if suitables templates are used.
         """
         response = self.client.get(reverse("legal"))
@@ -157,8 +149,8 @@ class TestWiews(TestCase):
             render_to_string("webapp/legal.html")
 
     def test_if_view_myfavorites_return_302_and_use_suitables_templates(self):
-        """
-        1. Check if "response.status_code" is "302".
+        """1. Check if "response.status_code" is "302".
+
         2. Check if suitables templates are used.
         """
         response = self.client.get(reverse("myfavorites"))
@@ -171,16 +163,14 @@ class TestWiews(TestCase):
             render_to_string("webapp/myfavorites.html")
 
     def test_if_view_myfavorites_return_200_with_user_logged(self):
-        """
-        Check if myfavorites "response.status_code" is "200" with user logged.
-        """
+        """Check if myfavorites "response.status_code" is "200" with user logged."""
         self.client.force_login(CustomUser.objects.get_or_create("user1")[0])
         response = self.client.get(reverse("myfavorites"))
         self.assertEqual(response.status_code, 200)
 
     def test_if_view_product_return_200_and_use_suitables_templates(self):
-        """
-        1. Check if "response.status_code" is "200".
+        """1. Check if "response.status_code" is "200".
+
         2. Check if suitables templates are used.
         """
         response = self.client.get(reverse("product", args=[self.product.id]))
@@ -191,8 +181,8 @@ class TestWiews(TestCase):
             render_to_string("webapp/product.html", {"product": self.product,})
 
     def test_if_view_results_return_200_and_use_suitables_templates(self):
-        """
-        1. Check if "response.status_code" is "200".
+        """1. Check if "response.status_code" is "200".
+
         2. Check if suitables templates are used.
         """
         response = self.client.get(
@@ -209,8 +199,8 @@ class TestWiews(TestCase):
         self.assertEqual(len(response.context), 3)
 
     def test_if_view_search_return_200_and_use_suitables_templates(self):
-        """
-        1. Check if "response.status_code" is "200".
+        """1. Check if "response.status_code" is "200".
+        
         2. Check if suitables templates are used.
         """
         response = self.client.get(reverse("search"), {"query": self.query})

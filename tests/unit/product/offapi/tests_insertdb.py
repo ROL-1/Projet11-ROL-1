@@ -1,3 +1,4 @@
+"""Test insertdb.py from offapi."""
 from django.test import TestCase, Client
 
 from django.db import IntegrityError
@@ -107,6 +108,7 @@ class TestInsertdb(TestCase):
         self.assertTrue(count == 0)
 
     def test_insertdb(self):
+        """Check if data can be loaded from a json, like api_request.api_get_data give datas."""
         api_results = [
             {
                 "categories": "Pizzas",

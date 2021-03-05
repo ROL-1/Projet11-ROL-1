@@ -14,6 +14,7 @@ class FirefoxFunctionalTestCases(LiveServerTestCase):
 
     @classmethod
     def setUpClass(cls):
+        """Create webdriver."""
         super().setUpClass()
         cls.driver = webdriver.Firefox()
         cls.driver.implicitly_wait(30)
@@ -21,16 +22,19 @@ class FirefoxFunctionalTestCases(LiveServerTestCase):
 
     @classmethod
     def tearDownClass(cls):
+        """Leave driver."""
         super().tearDownClass()
         cls.driver.quit()
 
     def setUp(self):
+        """Load user model."""
         User = get_user_model()
         self.user = User.objects.create_user(
             username="user1", password="mdp123mdp"
         )
 
     def test_user_can_connect_and_disconnect_without_error(self):
+        """User can connect and disconnect without error."""
         self.driver.get(self.live_server_url)
         self.driver.find_element_by_css_selector("#button-login").click()
         self.driver.find_element_by_css_selector("#id_username").send_keys(

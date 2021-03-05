@@ -9,18 +9,17 @@ class TestApiRequests:
     # @classmethod
     # def setUpTestData(cls):
     #     """Create test datas."""
+    #     cls.charmax_res = {
+    #         "generic_name_fr": 100,
+    #         "product_name_fr": 100,
+    #         "url": 200,
+    #         "image_url": 200,
+    #         "categories": 75,
+    #         "brands": 75,
+    #     }
 
     def test_api_get_data(self, monkeypatch):
-        # Fake datas
-        charmax_res = {
-            "generic_name_fr": 100,
-            "product_name_fr": 100,
-            "url": 200,
-            "image_url": 200,
-            "categories": 75,
-            "brands": 75,
-        }
-
+        """Use pytest to mock api_get_data results."""
         api_results = [
             {
                 "categories": "Pizzas",
@@ -94,11 +93,16 @@ class TestApiRequests:
             },
         ]
 
-        def mock_api_get_data(self):
-            """Mock function for ApiRequests."""
+        def mock_api_request(self):
+            """Mock function for apiRequests."""
+            return None
+
+        def mock_add_scraped(self):
+            """Mock function for apiRequests."""
             return api_results
 
-        monkeypatch.setattr(ApiRequests, "api_get_data", mock_api_get_data)
+        monkeypatch.setattr(ApiRequests, "api_get_data", mock_api_request)
+        monkeypatch.setattr(ApiRequests, "api_get_data", mock_add_scraped)
 
         Api_data = ApiRequests().api_get_data()
 
