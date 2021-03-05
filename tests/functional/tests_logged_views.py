@@ -48,16 +48,3 @@ class FirefoxFunctionalTestCases(LiveServerTestCase):
         self.assertEqual(
             self.driver.current_url, "{}/".format(self.live_server_url)
         )
-
-    # def test_user_can_search_in_nav_search_field(self):
-    #     self.driver.get(self.live_server_url)
-    #     self.driver.find_element_by_css_selector(
-    #         "#search-nav-input"
-    #     ).send_keys("pizza")
-    #     self.driver.find_element_by_css_selector(
-    #         "#search-nav-input"
-    #     ).send_keys(Keys.ENTER)
-    #     self.assertEqual(
-    #         self.driver.current_url,
-    #         "{}/webapp/results?query=pizza".format(self.live_server_url),
-    #     )
