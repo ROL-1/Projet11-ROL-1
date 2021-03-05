@@ -13,8 +13,6 @@ from product.models import (
 )
 from user.models import CustomUser, Favorites
 
-# https://docs.djangoproject.com/fr/3.1/topics/testing/tools/
-
 
 class TestWiews(TestCase):
     """Test views and associated templates."""

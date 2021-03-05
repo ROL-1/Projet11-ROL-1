@@ -7,8 +7,6 @@ from django.template.loader import render_to_string
 
 from user.models import CustomUser
 
-# https://docs.djangoproject.com/fr/3.1/topics/testing/tools/
-
 
 class TestWiews(TestCase):
     """Test views and associated templates."""

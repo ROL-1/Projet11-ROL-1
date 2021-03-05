@@ -6,18 +6,6 @@ from product.offapi.api_requests import ApiRequests
 class TestApiRequests:
     """Test for class : Command."""
 
-    # @classmethod
-    # def setUpTestData(cls):
-    #     """Create test datas."""
-    #     cls.charmax_res = {
-    #         "generic_name_fr": 100,
-    #         "product_name_fr": 100,
-    #         "url": 200,
-    #         "image_url": 200,
-    #         "categories": 75,
-    #         "brands": 75,
-    #     }
-
     def test_api_get_data(self, monkeypatch):
         """Use pytest to mock api_get_data results."""
         api_results = [
