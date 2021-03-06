@@ -2,8 +2,6 @@
 
 from django.test import TestCase
 
-from product.offapi.charmax import Charmax
-
 from purbeurre.asgi import application, get_asgi_application, os
 
 

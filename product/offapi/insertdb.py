@@ -1,5 +1,6 @@
 """Clear and fill the database."""
 
+import string
 from django.db import transaction, IntegrityError
 
 from product.models import (
@@ -9,8 +10,6 @@ from product.models import (
     Brands,
     CodesProductsOff,
 )
-
-import string
 
 
 def deletedata():

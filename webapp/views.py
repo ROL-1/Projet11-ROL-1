@@ -11,6 +11,11 @@ from django.shortcuts import (
     render,
 )
 
+# Autocomplete
+from dal import autocomplete
+
+from .cleaner.cleaner import Cleaner
+from .forms import ProductForm
 from product.offapi.apiconfig import CATEGORIES
 from product.models import (
     Product,
@@ -20,17 +25,6 @@ from product.models import (
     CodesProductsOff,
 )
 from user.models import Favorites
-
-# Cleaner
-from .cleaner.cleaner import Cleaner
-
-# Autocomplete
-
-from dal import autocomplete
-
-from product.models import Product
-
-from .forms import ProductForm
 
 
 class ProductAutocomplete(autocomplete.Select2QuerySetView):

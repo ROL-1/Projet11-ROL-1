@@ -1,10 +1,9 @@
 """Test views for webapp app."""
 
-
-from django.test import LiveServerTestCase, Client
-from django.contrib.auth import get_user_model
-from selenium import webdriver
 from django.contrib import auth
+from django.contrib.auth import get_user_model
+from django.test import LiveServerTestCase, Client
+from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 

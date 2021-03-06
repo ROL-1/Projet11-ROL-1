@@ -1,7 +1,7 @@
 """Test insertdb.py from offapi."""
 from django.test import TestCase, Client
-
 from django.db import IntegrityError
+
 
 from product.models import (
     CodesProductsOff,
@@ -10,12 +10,8 @@ from product.models import (
     Categories,
     Product,
 )
-
-from user.models import CustomUser, Favorites
-
 from product.offapi.insertdb import deletedata, insertdb
-
-# https://docs.djangoproject.com/fr/3.1/topics/testing/tools/
+from user.models import CustomUser, Favorites
 
 
 class TestInsertdb(TestCase):
