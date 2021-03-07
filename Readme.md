@@ -44,7 +44,7 @@ Commande personnalisée pour initialiser la base de données sur heroku :
 Depuis le dossier contenant manage.py:
 - `python manage.py database`
 
-## Logiciels, librairies, APIs
+## Logiciels, librairies, APIs%
 - Python 3.8
 - Django 3.1
 - Ajax (JQuery)

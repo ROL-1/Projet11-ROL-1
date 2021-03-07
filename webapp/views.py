@@ -93,7 +93,7 @@ def legal(request):
 def myfavorites(request):
     """View myfavorites."""
     try:
-        favorites = get_list_or_404(Favorites)
+        favorites = get_list_or_404(Favorites, CustomUser_id=request.user.id)
         results = []
         for favorite in favorites:
             results.append(get_object_or_404(Product, id=favorite.Product_id))
