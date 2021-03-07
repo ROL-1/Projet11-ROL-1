@@ -16,6 +16,7 @@
 </header>
 
 <!-- Results -->
+
 <section class="page-section main-section bg-primary results">
     <div class="container">
         {% if messages %}
@@ -50,5 +51,7 @@
     </div>
     {% endif %}
 </section>
-
+{%if not products %}
+<div class="page-section main-section bg-primary h-50"></div>
+{% endif %}
 {% endblock %}
