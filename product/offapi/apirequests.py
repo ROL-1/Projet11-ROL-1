@@ -63,7 +63,11 @@ class ApiRequests:
         """Check 2 : Empty string if there is a forbiden caracter."""
         for field, string in product.items():
             if isinstance(string, str):
-                match = bool(re.search(r"\s+", string))
+                match = bool(
+                    re.search(r"\t", string)
+                    or re.search(r"\n", string)
+                    or re.search(r"\r", string)
+                )
                 if match:
                     product[field] = ""
 
