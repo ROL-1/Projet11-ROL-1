@@ -3,6 +3,7 @@
 """class to get informations from API."""
 
 import json
+import re
 import requests
 
 from product.offapi.apiconfig import (

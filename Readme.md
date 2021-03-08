@@ -39,6 +39,7 @@ Puis passer la commande :
 
 Commande personnalisée pour initialiser la base de données sur heroku :
 
+- (éventuellement pour la réinitialiser : `heroku reset database`)
 - `heroku run python manage.py migrate`
 - `heroku run bash -a <nom_projet_heroku>`
 Depuis le dossier contenant manage.py:
