@@ -18,4 +18,4 @@ saturated-fat_100g,fat_100g,nutriscore_grade,brands,code,categories,url,image_ur
 CATEGORIES = ["Pizzas", "Sodas", "Chocolats", "Brioches", "Pains"]
 
 # Minimum number of products by categories.
-MIN_PROD = 500
+MIN_PROD = 25
