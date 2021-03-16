@@ -15,4 +15,6 @@ class Favorites(models.Model):
     """Favorites model from django."""
 
     Product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    CustomUser = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    CustomUser = models.ForeignKey(
+        CustomUser, on_delete=models.CASCADE
+    )  # cf settngs.py
