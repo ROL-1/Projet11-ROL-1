@@ -3,6 +3,5 @@ __pycache__/
 .coverage
 coverage_html/
 staticfiles/
-dumps/
 geckodriver.log
 .pytest*
