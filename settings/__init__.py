@@ -25,13 +25,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get(
-    "SECRET_KEY", "ya^^!m@+9t14#tv*_cw4ejpigi=@p1vu3_%nh+lrhhtf"
+    "SECRET_KEY", "jR$x0b]W]?vn<FMN!9K}7p$hE}|"
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = ["159.89.8.181"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "lepurbeurre.herokuapp.com"]
 
 # Application definition
 
@@ -91,11 +91,11 @@ WSGI_APPLICATION = "purbeurre.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "ENGINE": "django.db.backends.postgresql",
         "NAME": "purbeurre",
         "USER": "rol",
         "PASSWORD": "mdp123mdp",
-        "HOST": "localhost",
+        "HOST": "",
         "PORT": "5432",
     }
 }
@@ -135,7 +135,6 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = "/static/"
@@ -147,5 +146,6 @@ DEBUG = True
 
 AUTH_USER_MODEL = "user.CustomUser"
 
-
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "home"
 
