@@ -40,6 +40,8 @@ class ProductAutocomplete(autocomplete.Select2QuerySetView):
 
         return qs
 
+def testsentry(request):
+    CECI EST UN TEST ?!
 
 def contact(request):
     """View contact."""
