@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 import os
 import dj_database_url
-import django_heroku
+
 
 from pathlib import Path
 
@@ -29,7 +29,7 @@ SECRET_KEY = "jR$x0b]W]?vn<FMN!9K}7p$hE}|"
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "lepurbeurre.herokuapp.com"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 # Application definition
 
