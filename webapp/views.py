@@ -26,7 +26,11 @@ from product.models import (
 )
 from user.models import Favorites
 
+# Logging
+import logging
 
+logger= logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 class ProductAutocomplete(autocomplete.Select2QuerySetView):
     """Autocomplete for Product table."""
 
@@ -40,8 +44,6 @@ class ProductAutocomplete(autocomplete.Select2QuerySetView):
 
         return qs
 
-def index(request):
-    CECI EST UN TEST
 
 
 def contact(request):
@@ -178,7 +180,6 @@ def search(request):
     # Get user input
     query = request.GET["query"]
     query_cleaned = Cleaner(query).query_cleaned
-
     try:
         # Retrive information from database.
         results_lists = []
@@ -212,5 +213,6 @@ def search(request):
             request, messages.INFO, "Aucun produit correspondant trouvé."
         )
         return redirect("home")
+    logger.info('New search',exc_info=True)
     return render(request, "webapp/search.html", context)
 
