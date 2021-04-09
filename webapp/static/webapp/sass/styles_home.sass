@@ -1,0 +1,36 @@
+$color-link: #86ebe6
+
+/* Body */
+#colette1
+    display: none
+
+@media (min-width: 992px)
+    #colette2
+        display: none
+
+    #colette1
+        display: block
+
+.main-section
+    & #remy, #colette1, #colette2
+        max-width: 8em
+
+    #remy
+        margin-top: 2em
+
+    @media (min-width: 576px)
+        #remy
+            margin-top: 0
+
+.contact
+    color: black
+
+    & a
+        color: black
+
+    & a:hover
+        color: $color-link
+        text-decoration: underline
+
+.select2
+    width: 100% !important

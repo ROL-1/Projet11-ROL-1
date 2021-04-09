@@ -1,4 +1,4 @@
-"""purbeurre URL Configuration
+"""purbeurre URL Configuration.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
@@ -20,15 +20,16 @@ from django.contrib import admin
 from webapp import views
 
 urlpatterns = [
-    url(r'^$', views.index),
-    url(r'^product/', include('product.urls')),
-    url(r'^user/', include('user.urls')),
-    url(r'^webapp/', include('webapp.urls')),
-    url(r'^admin/', admin.site.urls),
+    url(r"^$", views.home, name="home"),
+    url(r"^product/", include("product.urls")),
+    url(r"^user/", include("user.urls")),
+    url(r"^webapp/", include("webapp.urls")),
+    url(r"^admin/", admin.site.urls, name="admin"),
 ]
 
 if settings.DEBUG:
     import debug_toolbar
+
     urlpatterns = [
-        url(r'^__debug__/', include(debug_toolbar.urls)),
+        url(r"^__debug__/", include(debug_toolbar.urls)),
     ] + urlpatterns
