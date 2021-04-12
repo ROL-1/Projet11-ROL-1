@@ -4,6 +4,7 @@
 <!-- Masthead-->
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'webapp/css/styles_results.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'webapp/css/styles_search.css' %}" />
 <header class="masthead masthead-results h-auto">
     <div class="container h-100">
         <div class="row h-100 align-items-center justify-content-center text-center">
@@ -24,12 +25,15 @@
         </div>
 
         <!-- Filters -->
-        FILTRES :
-        <button id="filter_A" value="1"><img src="{% static 'webapp/assets/img/results/a.png' %}"></button>
-        <button id="filter_B" value="2"><img src="{% static 'webapp/assets/img/results/b.png' %}"></button>
-        <button id="filter_C" value="3"><img src="{% static 'webapp/assets/img/results/c.png' %}"></button>
-        <button id="filter_D" value="4"><img src="{% static 'webapp/assets/img/results/d.png' %}"></button>
-        <button id="filter_E" value="5"><img src="{% static 'webapp/assets/img/results/e.png' %}"></button>
+        <div class="container">
+            <div class="text-right">
+                <button class="filter" id="filter_A" value="1"></button>
+                <button class="filter" id="filter_B" value="2"></button>
+                <button class="filter" id="filter_C" value="3"></button>
+                <button class="filter" id="filter_D" value="4"></button>
+                <button class="filter" id="filter_E" value="5"></button>
+            </div>
+        </div>
 
         <!-- Portfolio-->
         <div id="portfolio">
