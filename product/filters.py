@@ -8,5 +8,5 @@ class ProductFilter(django_filters.FilterSet):
     class Meta:
         model = Product
         fields = {
-            "NutriscoreGrades": ["gt"],
+            "NutriscoreGrades_id": ["lt"],
         }

@@ -185,7 +185,7 @@ def search(request):
     # Create list for each word.
     for word in query_cleaned:
         # search in "product_name_fr".
-        results = get_list_or_404(Product, product_name_fr__contains=word)
+        results = get_list_or_404(Product, product_name_fr__contains=word,)
         for product in results:
             results_lists.append(product)
         # search in "generic_name_fr".
@@ -194,6 +194,7 @@ def search(request):
             results_lists.append(product)
 
     # Create pagination from 'results_lists'.
+    print(results_lists[0].NutriscoreGrades_id)
     paginator = Paginator(results_lists, 6)
     # Get current page number.
     page = request.GET.get("page")
