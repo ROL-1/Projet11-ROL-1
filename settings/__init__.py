@@ -24,9 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get(
-    "SECRET_KEY", "jR$x0b]W]?vn<FMN!9K}7p$hE}|"
-)
+SECRET_KEY = os.environ.get("SECRET_KEY", "jR$x0b]W]?vn<FMN!9K}7p$hE}|")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -46,7 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "django_heroku",
+    "django_filters",
     # Miscellaneous
     "debug_toolbar",
     "product.apps.ProductConfig",
