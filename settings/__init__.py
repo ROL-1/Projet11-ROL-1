@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "django_filters",
+    "django_heroku",
     # Miscellaneous
     "debug_toolbar",
     "product.apps.ProductConfig",

@@ -2,7 +2,6 @@
 
 {% block content %}
 <!-- Masthead-->
-{% load my_tags %}
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'webapp/css/styles_results.css' %}" />
 <header class="masthead masthead-results h-auto">
@@ -24,11 +23,14 @@
             <hr class="divider darth my-4" />
         </div>
 
-        <!-- Filterset -->
-        <form action="" method="get">
-            {{ filter.form.as_p }}
-            <input type="submit" />
-        </form>
+        <!-- Filters -->
+        FILTRES :
+        <button id="filter_A" value="1"><img src="{% static 'webapp/assets/img/results/a.png' %}"></button>
+        <button id="filter_B" value="2"><img src="{% static 'webapp/assets/img/results/b.png' %}"></button>
+        <button id="filter_C" value="3"><img src="{% static 'webapp/assets/img/results/c.png' %}"></button>
+        <button id="filter_D" value="4"><img src="{% static 'webapp/assets/img/results/d.png' %}"></button>
+        <button id="filter_E" value="5"><img src="{% static 'webapp/assets/img/results/e.png' %}"></button>
+
         <!-- Portfolio-->
         <div id="portfolio">
             <div class="container-fluid p-0">
@@ -43,14 +45,11 @@
             page {{ products.number }} sur {{ products.paginator.num_pages }}<br />
             {% if products.has_previous %}
             <a class="col-sm-2 btn btn-primary"
-                href="?{% param_replace page=products.previous_page_number %}">Précédent</a>
-            <!-- <a class="col-sm-2 btn btn-primary"
-                href="?query={{ query }}&page={{ products.previous_page_number }}">Précédent</a> -->
+                href="?query={{ query }}&page={{ products.previous_page_number }}">Précédent</a>
             {% endif %}
             {% if products.has_next %}
-            <a class="col-sm-2 btn btn-primary" href="?{% param_replace page=products.next_page_number %}">Suivant</a>
-            <!-- <a class="col-sm-2 btn btn-primary"
-                href="?query={{ query }}&page={{ products.next_page_number }}">Suivant</a> -->
+            <a class="col-sm-2 btn btn-primary"
+                href="?query={{ query }}&page={{ products.next_page_number }}">Suivant</a>
             {% endif %}
         </ul>
     </div>
