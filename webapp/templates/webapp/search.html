@@ -2,6 +2,7 @@
 
 {% block content %}
 <!-- Masthead-->
+{% load my_tags %}
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'webapp/css/styles_results.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'webapp/css/styles_search.css' %}" />
@@ -46,12 +47,15 @@
         <ul class="pager">
             page {{ products.number }} sur {{ products.paginator.num_pages }}<br />
             {% if products.has_previous %}
+            <!-- <a class="col-sm-2 btn btn-primary"
+                href="?query={{ query }}&page={{ products.previous_page_number }}">Précédent</a> -->
             <a class="col-sm-2 btn btn-primary"
-                href="?query={{ query }}&page={{ products.previous_page_number }}">Précédent</a>
+                href="?{% param_replace page=products.previous_page_number %}">Précédent</a>
             {% endif %}
             {% if products.has_next %}
-            <a class="col-sm-2 btn btn-primary"
-                href="?query={{ query }}&page={{ products.next_page_number }}">Suivant</a>
+            <a class="col-sm-2 btn btn-primary" href="?{% param_replace page=products.next_page_number %}">Suivant</a>
+            <!-- <a class="col-sm-2 btn btn-primary"
+                href="?query={{ query }}&page={{ products.next_page_number }}">Suivant</a> -->
             {% endif %}
         </ul>
     </div>
