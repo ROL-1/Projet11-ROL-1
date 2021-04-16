@@ -74,6 +74,8 @@ class TestWiews(TestCase):
         favorite = Favorites.objects.create(
             Product_id=cls.product.id, CustomUser_id=user.id
         )
+        # Nutrifilter
+        cls.nutri_filter = 5
 
     def test_if_view_admin_return_302(self):
         """Check if "response.status_code" is "302"."""
@@ -201,7 +203,10 @@ class TestWiews(TestCase):
         
         2. Check if suitables templates are used.
         """
-        response = self.client.get(reverse("search"), {"query": self.query})
+        response = self.client.get(
+            reverse("search"),
+            {"nutri_filter": self.nutri_filter, "query": self.query},
+        )
         self.assertEqual(response.status_code, 200)
         with self.assertTemplateUsed("webapp/search.html"):
             render_to_string("webapp/search.html")
