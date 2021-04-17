@@ -153,8 +153,8 @@ else:
 
 AUTH_USER_MODEL = "user.CustomUser"
 
-LOGIN_REDIRECT_URL = "index"
-LOGOUT_REDIRECT_URL = "index"
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "home"
 
 # BETTER HEROKU LOGS
 LOGGING = {
