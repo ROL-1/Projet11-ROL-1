@@ -176,51 +176,56 @@ def search(request):
     query = request.GET["query"]
     query_cleaned = Cleaner(query).query_cleaned
 
-    # try:
-    # Retrive information from database.
-    results_lists = []
-    # Create list for each word.
-    for word in query_cleaned:
-        # search in "product_name_fr".
-        results = get_list_or_404(Product, product_name_fr__contains=word)
-        for product in results:
-            results_lists.append(product)
-
-        # search in "generic_name_fr".
-        results = get_list_or_404(Product, generic_name_fr__contains=word)
-        for product in results:
-            results_lists.append(product)
-
-    nutri_filter = request.GET["nutri_filter"]
-    if nutri_filter != 5:
-        display_list = []
-        for p in results_lists:
-            if p.NutriscoreGrades_id <= int(nutri_filter):
-                display_list.append(p)
-    else:
-        display_list = results_lists
-
-    # Create pagination from 'results_lists'.
-    paginator = Paginator(display_list, 6)
-
-    # Get current page number.
-    page = request.GET.get("page")
     try:
-        products = paginator.page(page)
-    except PageNotAnInteger:
-        products = paginator.page(1)
-    except EmptyPage:
-        products = paginator.page(paginator.num_pages)
+        # Retrive information from database.
+        results_lists = []
+        # Create list for each word.
+        for word in query_cleaned:
+            # search in "product_name_fr".
+            results = get_list_or_404(Product, product_name_fr__contains=word)
+            for product in results:
+                results_lists.append(product)
 
-    context = {
-        "products": products,
-        "query": query,
-        "nutri_filter": nutri_filter,
-    }
-    # except:
-    #     messages.add_message(
-    #         request, messages.INFO, "Aucun produit correspondant trouvé."
-    #     )
-    #     return redirect("home")
+            try:
+                # search in "generic_name_fr".
+                results = get_list_or_404(
+                    Product, generic_name_fr__contains=word
+                )
+                for product in results:
+                    results_lists.append(product)
+            except:
+                pass
+
+        nutri_filter = request.GET["nutri_filter"]
+        if nutri_filter != 5:
+            display_list = []
+            for p in results_lists:
+                if p.NutriscoreGrades_id <= int(nutri_filter):
+                    display_list.append(p)
+        else:
+            display_list = results_lists
+
+        # Create pagination from 'results_lists'.
+        paginator = Paginator(display_list, 6)
+
+        # Get current page number.
+        page = request.GET.get("page")
+        try:
+            products = paginator.page(page)
+        except PageNotAnInteger:
+            products = paginator.page(1)
+        except EmptyPage:
+            products = paginator.page(paginator.num_pages)
+
+        context = {
+            "products": products,
+            "query": query,
+            "nutri_filter": nutri_filter,
+        }
+    except:
+        messages.add_message(
+            request, messages.INFO, "Aucun produit correspondant trouvé."
+        )
+        return redirect("home")
     return render(request, "webapp/search.html", context)
 
