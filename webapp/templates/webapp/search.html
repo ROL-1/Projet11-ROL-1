@@ -28,11 +28,14 @@
         <!-- Filters -->
         <div class="container filters text-center">
             <p>Filtres :</p>
-            <button class="filter" id="filter_A" value="1"></button>
-            <button class="filter" id="filter_B" value="2"></button>
-            <button class="filter" id="filter_C" value="3"></button>
-            <button class="filter" id="filter_D" value="4"></button>
-            <button class="filter" id="filter_E" value="5"></button>
+            <button class="filter" id="reset_filters" value="5"></button>
+            {% for x in nutriscore_list %}
+            {% if x == 1 %}<button class="filter letters" id="filter_A" value="1"></button>{% endif %}
+            {% if x == 2 %}<button class="filter letters" id="filter_B" value="2"></button>{% endif %}
+            {% if x == 3 %}<button class="filter letters" id="filter_C" value="3"></button>{% endif %}
+            {% if x == 4 %}<button class="filter letters" id="filter_D" value="4"></button>{% endif %}
+            {% if x == 5 %}<button class="filter letters" id="filter_E" value="5"></button>{% endif %}
+            {% endfor %}
         </div>
 
         <!-- Portfolio-->

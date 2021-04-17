@@ -18,7 +18,15 @@
   background: url("../assets/img/results/e.png") no-repeat;
 }
 
-.filter {
+#reset_filters {
+  background: url("../assets/img/scores.png") no-repeat;
+  background-size: 100% !important;
+  width: 100px !important;
+  height: 55px !important;
+  border: none;
+}
+
+.letters {
   background-size: 100% !important;
   height: 65px;
   width: 40px;

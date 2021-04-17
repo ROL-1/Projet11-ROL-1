@@ -217,11 +217,12 @@ class TestWiews(TestCase):
         self.assertTrue(len(response.context["products"]) > 1)
         self.assertTrue(response.context["nutri_filter"] == "5")
 
-    def test_if_view_search_filter_products(self):
+    def test_if_view_search_filter_products_and_context_is_filled(self):
         """1. Check if products are filtered."""
         response = self.client.get(
             reverse("search"), {"nutri_filter": 1, "query": self.query},
         )
         self.assertTrue(response.context["nutri_filter"] == "1")
         self.assertTrue(str(response.context["products"]) == "<Page 1 of 1>")
+        self.assertTrue(str(response.context["nutriscore_list"]) == "[1]")
 

@@ -205,6 +205,11 @@ def search(request):
         else:
             display_list = results_lists
 
+        nutriscore_list = []
+        for p in display_list:
+            nutriscore_list.append(p.NutriscoreGrades_id)
+        nutriscore_list = list(set(nutriscore_list))
+
         # Create pagination from 'results_lists'.
         paginator = Paginator(display_list, 6)
 
@@ -221,6 +226,7 @@ def search(request):
             "products": products,
             "query": query,
             "nutri_filter": nutri_filter,
+            "nutriscore_list": nutriscore_list,
         }
     except:
         messages.add_message(
