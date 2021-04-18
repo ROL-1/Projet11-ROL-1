@@ -24,7 +24,7 @@ def deletedata():
 def insertdb(Api_data):
     """Use Django Orm to fill database."""
     # Fill Nutriscoregrades table
-    grades = list(string.ascii_lowercase[0:4])
+    grades = list(string.ascii_lowercase[0:5])
     i = 1
     for grade in grades:
         NutriscoreGrades.objects.get_or_create(pk=i, nutriscore_grade=grade)

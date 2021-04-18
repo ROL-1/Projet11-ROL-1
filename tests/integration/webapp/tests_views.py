@@ -12,6 +12,7 @@ from product.models import (
     Product,
 )
 from user.models import CustomUser, Favorites
+from django.urls import exceptions
 
 
 class TestWiews(TestCase):
@@ -74,6 +75,8 @@ class TestWiews(TestCase):
         favorite = Favorites.objects.create(
             Product_id=cls.product.id, CustomUser_id=user.id
         )
+        # Nutrifilter
+        cls.nutri_filter = 5
 
     def test_if_view_admin_return_302(self):
         """Check if "response.status_code" is "302"."""
@@ -201,7 +204,10 @@ class TestWiews(TestCase):
         
         2. Check if suitables templates are used.
         """
-        response = self.client.get(reverse("search"), {"query": self.query})
+        response = self.client.get(
+            reverse("search"),
+            {"nutri_filter": self.nutri_filter, "query": self.query},
+        )
         self.assertEqual(response.status_code, 200)
         with self.assertTemplateUsed("webapp/search.html"):
             render_to_string("webapp/search.html")
@@ -210,6 +216,28 @@ class TestWiews(TestCase):
         with self.assertTemplateUsed("webapp/portfoliobox.html"):
             render_to_string("webapp/search.html")
         self.assertTrue(len(response.context["products"]) > 1)
+        self.assertTrue(response.context["nutri_filter"] == "5")
+
+    def test_if_view_search_filter_products_and_context_is_filled(self):
+        """1. Check if products are filtered.
+        
+        2. Check if context is filled correctly."""
+        response = self.client.get(
+            reverse("search"), {"nutri_filter": 1, "query": self.query},
+        )
+        self.assertTrue(response.context["nutri_filter"] == "1")
+        self.assertTrue(str(response.context["products"]) == "<Page 1 of 1>")
+        self.assertTrue(str(response.context["nutriscore_list"]) == "[1]")
+
+    def test_myFavorites_page_name_is_not_mesFavoris(self):
+        """Check if NoReverseMatch is caused by page named mesFavoris."""
+        with self.assertRaises(exceptions.NoReverseMatch):
+            self.client.get(reverse("mesFavoris"))
+
+    def test_home_page_name_is_not_index(self):
+        """Check if NoReverseMatch is caused by page named index."""
+        with self.assertRaises(exceptions.NoReverseMatch):
+            self.client.get(reverse("index"))
 
     def test_myFavorites_page_name_is_not_mesFavoris(self):
         """Check if NoReverseMatch is caused by page named mesFavoris."""

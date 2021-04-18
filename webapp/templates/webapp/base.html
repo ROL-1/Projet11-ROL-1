@@ -40,6 +40,7 @@
                 <ul class="navbar-nav ml-auto my-2 my-lg-0">
                     <form id="search-nav" action="{% url 'search' %}" method="get">
                         {% csrf_token %}
+                        <input type="hidden" name="nutri_filter" value="5" />
                         <input id="search-nav-input" type="text" class="form-control search-nav" placeholder="Produit"
                             name="query" required>
                     </form>
@@ -99,6 +100,7 @@
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
     <!-- Core theme JS-->
     <script src="{% static 'webapp/js/scripts.js' %}"></script>
+    <script src="{% static 'webapp/js/search.js' %}"></script>
     {{ form.media }}
     {{ form2.media }}
 </body>

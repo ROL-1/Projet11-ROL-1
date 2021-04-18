@@ -181,19 +181,38 @@ def search(request):
         results_lists = []
         # Create list for each word.
         for word in query_cleaned:
+            # search in "product_name_fr".
             results = get_list_or_404(Product, product_name_fr__contains=word)
             for product in results:
                 results_lists.append(product)
-            if not results:
-                # If not found, search in "generic_name_fr".
+
+            try:
+                # search in "generic_name_fr".
                 results = get_list_or_404(
                     Product, generic_name_fr__contains=word
                 )
                 for product in results:
                     results_lists.append(product)
+            except:
+                pass
+
+        nutri_filter = request.GET["nutri_filter"]
+        if nutri_filter != 5:
+            display_list = []
+            for p in results_lists:
+                if p.NutriscoreGrades_id <= int(nutri_filter):
+                    display_list.append(p)
+        else:
+            display_list = results_lists
+
+        nutriscore_list = []
+        for p in display_list:
+            nutriscore_list.append(p.NutriscoreGrades_id)
+        nutriscore_list = list(set(nutriscore_list))
 
         # Create pagination from 'results_lists'.
-        paginator = Paginator(results_lists, 6)
+        paginator = Paginator(display_list, 6)
+
         # Get current page number.
         page = request.GET.get("page")
         try:
@@ -203,7 +222,12 @@ def search(request):
         except EmptyPage:
             products = paginator.page(paginator.num_pages)
 
-        context = {"products": products, "query": query}
+        context = {
+            "products": products,
+            "query": query,
+            "nutri_filter": nutri_filter,
+            "nutriscore_list": nutriscore_list,
+        }
     except:
         messages.add_message(
             request, messages.INFO, "Aucun produit correspondant trouvé."

@@ -1,0 +1,41 @@
+#filter_A {
+  background: url("../assets/img/results/a.png") no-repeat;
+}
+
+#filter_B {
+  background: url("../assets/img/results/b.png") no-repeat;
+}
+
+#filter_C {
+  background: url("../assets/img/results/c.png") no-repeat;
+}
+
+#filter_D {
+  background: url("../assets/img/results/d.png") no-repeat;
+}
+
+#filter_E {
+  background: url("../assets/img/results/e.png") no-repeat;
+}
+
+#reset_filters {
+  background: url("../assets/img/scores.png") no-repeat;
+  background-size: 100% !important;
+  width: 100px !important;
+  height: 55px !important;
+  border: none;
+}
+
+.letters {
+  background-size: 100% !important;
+  height: 65px;
+  width: 40px;
+  border: none;
+}
+
+@media (min-width: 992px) {
+  .filters {
+    text-align: right !important;
+  }
+}
+/*# sourceMappingURL=styles_search.css.map */
