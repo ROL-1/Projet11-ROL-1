@@ -211,3 +211,12 @@ class TestWiews(TestCase):
             render_to_string("webapp/search.html")
         self.assertTrue(len(response.context["products"]) > 1)
 
+    def test_myFavorites_page_name_is_not_mesFavoris(self):
+        """Check if NoReverseMatch is caused by page named mesFavoris."""
+        with self.assertRaises(exceptions.NoReverseMatch):
+            self.client.get(reverse("mesFavoris"))
+
+    def test_home_page_name_is_not_index(self):
+        """Check if NoReverseMatch is caused by page named index."""
+        with self.assertRaises(exceptions.NoReverseMatch):
+            self.client.get(reverse("index"))
